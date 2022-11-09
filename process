@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+
+import yaml
+
+with open('config.yaml', encoding='UTF-8') as f:
+    data = yaml.safe_load(f)
+
+
+print('# Foreman')
+print('## Plugins')
+for plugin_id, plugin in data['foreman']['plugins'].items():
+    if not plugin:
+        plugin = {}
+    plugin_name = plugin.get('name', f'foreman_{plugin_id}')
+    plugin_github_org = plugin.get('github_org', 'theforeman')
+    plugin_url = plugin.get('url', f'https://github.com/{plugin_github_org}/{plugin_name}')
+    plugin_installer = plugin.get('installer', True)
+
+    message = f'* [{plugin_id}]({plugin_url})'
+    if not plugin_installer:
+        message += ' (no installer)'
+    print(message)
+
+print('# Smart Proxy')
+
+print('## Modules')
+for module_id, module in data['smart_proxy']['modules'].items():
+    if not module:
+        module = {}
+    module_name = module.get('name', f'smart_proxy_{module_id}')
+    module_github_org = module.get('github_org', 'theforeman')
+    module_url = module.get('url', f'https://github.com/{module_github_org}/{module_name}')
+    module_installer = module.get('installer', True)
+
+    message = f'* [{module_id}]({module_url})'
+    if not module_installer:
+        message += ' (no installer)'
+    print(message)
+
+print('## Providers')
+for provider_id, provider in data['smart_proxy']['providers'].items():
+    if not provider:
+        provider = {}
+    provider_name = provider.get('name', f'smart_proxy_{provider_id}')
+    provider_github_org = provider.get('github_org', 'theforeman')
+    provider_url = provider.get('url', f'https://github.com/{provider_github_org}/{provider_name}')
+    provider_installer = provider.get('installer', True)
+
+    message = f'* [{provider_id}]({provider_url})'
+    if not provider_installer:
+        message += ' (no installer)'
+    print(message)

@@ -1,0 +1,101 @@
+---
+foreman:
+  # Based on grep 'foreman::plugin ' puppet-foreman/manifests/plugin/*.pp | cut -d\' -f2
+  plugins:
+    acd:
+      github_org: 'ATIX-AG'
+    ansible:
+    azure_rm:
+    bootdisk:
+    column_view:
+      # TODO: drop?
+    datacenter:
+      installer: false
+    default_hostgroup:
+    dhcp_browser:
+    digitalocean:
+      name: foreman-digitalocean
+      installer: false
+    discovery:
+    dlm:
+      url: 'https://github.com/dm-drogeriemarkt/foreman_dlm'
+    docker:
+      # TODO: archived
+      installer: false
+    expire_hosts:
+    git_templates:
+      github_org: 'dm-drogeriemarkt'
+    google:
+    hooks:
+    host_extra_validator:
+    kubevirt:
+    leapp:
+    memcache:
+      # TODO archive
+    monitoring:
+    netbox:
+      github_org: 'dm-drogeriemarkt'
+    omaha:
+    openscap:
+    ovirt_provision:
+      url: 'https://github.com/theforeman/ovirt_provision_plugin'
+    puppet:
+    puppetdb:
+      name: 'puppetdb_foreman'
+    remote_execution:
+    rescue:
+      github_org: 'dm-drogeriemarkt'
+    rh_cloud:
+      # Note: katello-only
+    salt:
+    scc_manager:
+      github_org: 'ATIX-AG'
+    setup:
+    snapshot_management:
+      github_org: 'ATIX-AG'
+    spacewalk:
+      # TODO: archived
+      github_org: 'dm-drogeriemarkt'
+      installer: false
+    statistics:
+    supervisory_authority:
+      github_org: 'timogoebel'
+      installer: false
+    tasks:
+      name: foreman-tasks
+    templates:
+    vault:
+      github_org: 'dm-drogeriemarkt'
+    virt_who_configure:
+    webhooks:
+    wreckingball:
+      github_org: 'dm-drogeriemarkt'
+
+smart_proxy:
+  # grep -R 'foreman_proxy::plugin::provider ' puppet-foreman_proxy/manifests/plugin | cut -d\' -f2
+  providers:
+    dhcp_infoblox:
+    dhcp_remote_isc:
+    dns_infoblox:
+    dns_powerdns:
+    dns_route53:
+      installer: false
+    realm_ad:
+      name: smart_proxy_realm_ad_plugin
+      installer: false
+  modules:
+    acd:
+      github_org: 'ATIX-AG'
+    ansible:
+    container_gateway:
+      github_org: 'Katello'
+      # TODO: installer? only indirectly?
+    discovery:
+    dynflow:
+    monitoring:
+    omaha:
+    openscap:
+    pulp:
+    remote_execution_ssh:
+    salt:
+    shellhooks:
