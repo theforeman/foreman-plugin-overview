@@ -1,6 +1,43 @@
 #!/usr/bin/env python3
 
+from dataclasses import dataclass
+
 import yaml
+
+
+@dataclass
+class Entry:
+    short_name: str
+    name: str = None
+    url: str = None
+    github_org: str = 'theforeman'
+    installer: bool = True
+
+    def __post_init__(self):
+        if not self.url:
+            self.url = f'https://github.com/{self.github_org}/{self.name}'
+
+    @property
+    def message(self):
+        msg = f'* [{self.short_name}]({self.url})'
+        if not self.installer:
+            msg += ' (no installer)'
+        return msg
+
+
+class ForemanPlugin(Entry): # pylint: disable=too-few-public-methods
+    def __post_init__(self):
+        if not self.name:
+            self.name = f'foreman_{self.short_name}'
+        super().__post_init__()
+
+
+class SmartProxyPlugin(Entry): # pylint: disable=too-few-public-methods
+    def __post_init__(self):
+        if not self.name:
+            self.name = f'smart_proxy_{self.short_name}'
+        super().__post_init__()
+
 
 with open('config.yaml', encoding='UTF-8') as f:
     data = yaml.safe_load(f)
@@ -9,44 +46,17 @@ with open('config.yaml', encoding='UTF-8') as f:
 print('# Foreman')
 print('## Plugins')
 for plugin_id, plugin in data['foreman']['plugins'].items():
-    if not plugin:
-        plugin = {}
-    plugin_name = plugin.get('name', f'foreman_{plugin_id}')
-    plugin_github_org = plugin.get('github_org', 'theforeman')
-    plugin_url = plugin.get('url', f'https://github.com/{plugin_github_org}/{plugin_name}')
-    plugin_installer = plugin.get('installer', True)
-
-    message = f'* [{plugin_id}]({plugin_url})'
-    if not plugin_installer:
-        message += ' (no installer)'
-    print(message)
+    foreman_plugin = ForemanPlugin(short_name=plugin_id, **(plugin or {}))
+    print(foreman_plugin.message)
 
 print('# Smart Proxy')
 
 print('## Modules')
 for module_id, module in data['smart_proxy']['modules'].items():
-    if not module:
-        module = {}
-    module_name = module.get('name', f'smart_proxy_{module_id}')
-    module_github_org = module.get('github_org', 'theforeman')
-    module_url = module.get('url', f'https://github.com/{module_github_org}/{module_name}')
-    module_installer = module.get('installer', True)
-
-    message = f'* [{module_id}]({module_url})'
-    if not module_installer:
-        message += ' (no installer)'
-    print(message)
+    smart_proxy_module = SmartProxyPlugin(short_name=module_id, **(module or {}))
+    print(smart_proxy_module.message)
 
 print('## Providers')
 for provider_id, provider in data['smart_proxy']['providers'].items():
-    if not provider:
-        provider = {}
-    provider_name = provider.get('name', f'smart_proxy_{provider_id}')
-    provider_github_org = provider.get('github_org', 'theforeman')
-    provider_url = provider.get('url', f'https://github.com/{provider_github_org}/{provider_name}')
-    provider_installer = provider.get('installer', True)
-
-    message = f'* [{provider_id}]({provider_url})'
-    if not provider_installer:
-        message += ' (no installer)'
-    print(message)
+    smart_proxy_provider = SmartProxyPlugin(short_name=provider_id, **(provider or {}))
+    print(smart_proxy_provider.message)
