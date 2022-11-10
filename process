@@ -39,24 +39,29 @@ class SmartProxyPlugin(Entry): # pylint: disable=too-few-public-methods
         super().__post_init__()
 
 
-with open('config.yaml', encoding='UTF-8') as f:
-    data = yaml.safe_load(f)
+def main():
+    with open('config.yaml', encoding='UTF-8') as f: # pylint: disable=invalid-name
+        data = yaml.safe_load(f)
 
 
-print('# Foreman')
-print('## Plugins')
-for plugin_id, plugin in data['foreman']['plugins'].items():
-    foreman_plugin = ForemanPlugin(short_name=plugin_id, **(plugin or {}))
-    print(foreman_plugin.message)
+    print('# Foreman')
+    print('## Plugins')
+    for plugin_id, plugin in data['foreman']['plugins'].items():
+        foreman_plugin = ForemanPlugin(short_name=plugin_id, **(plugin or {}))
+        print(foreman_plugin.message)
 
-print('# Smart Proxy')
+    print('# Smart Proxy')
 
-print('## Modules')
-for module_id, module in data['smart_proxy']['modules'].items():
-    smart_proxy_module = SmartProxyPlugin(short_name=module_id, **(module or {}))
-    print(smart_proxy_module.message)
+    print('## Modules')
+    for module_id, module in data['smart_proxy']['modules'].items():
+        smart_proxy_module = SmartProxyPlugin(short_name=module_id, **(module or {}))
+        print(smart_proxy_module.message)
 
-print('## Providers')
-for provider_id, provider in data['smart_proxy']['providers'].items():
-    smart_proxy_provider = SmartProxyPlugin(short_name=provider_id, **(provider or {}))
-    print(smart_proxy_provider.message)
+    print('## Providers')
+    for provider_id, provider in data['smart_proxy']['providers'].items():
+        smart_proxy_provider = SmartProxyPlugin(short_name=provider_id, **(provider or {}))
+        print(smart_proxy_provider.message)
+
+
+if __name__ == '__main__':
+    main()
