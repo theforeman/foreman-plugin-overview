@@ -86,6 +86,7 @@ foreman:
     remote_execution:
       deb: true
       rpm: true
+      puppet_acceptance_tests: 'foreman_rex_cockpit'
     rescue:
       github_org: 'dm-drogeriemarkt'
       deb: true
@@ -168,6 +169,7 @@ smart_proxy:
     ansible:
       deb: true
       rpm: true
+      puppet_acceptance_tests: true
     container_gateway:
       # Note: not exposed directly in the installer
       github_org: 'Katello'
@@ -175,9 +177,11 @@ smart_proxy:
     discovery:
       deb: true
       rpm: true
+      puppet_acceptance_tests: true
     dynflow:
       deb: true
       rpm: true
+      puppet_acceptance_tests: true
     monitoring:
       deb: true
       rpm: true
@@ -186,12 +190,15 @@ smart_proxy:
       rpm: true
     openscap:
       rpm: true
+      puppet_acceptance_tests: true
     pulp:
       # Note: not exposed directly in the installer
       rpm: true
     remote_execution_ssh:
       deb: true
       rpm: true
+      # TODO: also remote_execution_script_pull_mqtt
+      puppet_acceptance_tests: 'remote_execution_script'
     salt:
       deb: true
       rpm: true

@@ -40,6 +40,7 @@ class PackagedEntry(Entry): # pylint: disable=too-few-public-methods
     rpm: Optional[str] = None
     rpm_directory: str = 'plugins'
     deb: Optional[str] = None
+    puppet_acceptance_tests: Optional[str] = None
 
     def __post_init__(self):
         super().__post_init__()
@@ -58,12 +59,22 @@ class PackagedEntry(Entry): # pylint: disable=too-few-public-methods
         return f'{PACKAGING_URL}/tree/deb/develop/plugins/{self.deb}'
 
     @property
+    def puppet_module(self):
+        return None  # implemented by a subclass
+
+    @property
+    def puppet_acceptance_tests_url(self):
+        return f'https://github.com/theforeman/{self.puppet_module}/tree/master/spec/acceptance/{self.puppet_acceptance_tests}_spec.rb'  # pylint: disable=line-too-long
+
+    @property
     def message(self):
         msg = super().message
         if self.rpm:
             msg += f' ([RPM]({self.rpm_url}))'
         if self.deb:
             msg += f' ([deb]({self.deb_url}))'
+        if self.puppet_acceptance_tests:
+            msg += f' ([acceptance]({self.puppet_acceptance_tests_url}))'
         return msg
 
 
@@ -73,6 +84,10 @@ class ForemanPlugin(PackagedEntry): # pylint: disable=too-few-public-methods
             self.name = f'foreman_{self.short_name}'
         super().__post_init__()
 
+    @property
+    def puppet_module(self):
+        return 'puppet-foreman'
+
 
 class SmartProxyPlugin(PackagedEntry): # pylint: disable=too-few-public-methods
     def __post_init__(self):
@@ -80,7 +95,13 @@ class SmartProxyPlugin(PackagedEntry): # pylint: disable=too-few-public-methods
             self.name = f'smart_proxy_{self.short_name}'
         if self.deb is True:
             self.deb = self.name.replace("-", "_")
+        if self.puppet_acceptance_tests is True:
+            self.puppet_acceptance_tests = self.short_name
         super().__post_init__()
+
+    @property
+    def puppet_module(self):
+        return 'puppet-foreman_proxy'
 
 
 def main():
