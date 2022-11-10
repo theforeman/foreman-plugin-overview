@@ -4,101 +4,200 @@ foreman:
   plugins:
     acd:
       github_org: 'ATIX-AG'
+      rpm: true
     ansible:
+      deb: true
+      rpm: true
     azure_rm:
+      rpm: true
     bootdisk:
+      deb: true
+      rpm: true
     column_view:
       # TODO: drop?
+      deb: true
+      rpm: true
     datacenter:
       installer: false
+      deb: true
+      rpm: true
     default_hostgroup:
+      deb: true
+      rpm: true
     dhcp_browser:
+      deb: true
+      rpm: true
     digitalocean:
+      # TODO: dropped from packaging
       name: foreman-digitalocean
       installer: false
     discovery:
+      deb: true
+      rpm: true
     dlm:
       github_org: 'dm-drogeriemarkt'
+      rpm: true
     docker:
       # TODO: archived
       installer: false
     expire_hosts:
+      deb: true
+      rpm: true
     git_templates:
       github_org: 'dm-drogeriemarkt'
+      rpm: true
     google:
+      deb: true
+      rpm: true
     hooks:
+      deb: true
+      rpm: true
     host_extra_validator:
+      rpm: true
     kubevirt:
+      rpm: true
     leapp:
+      rpm: true
     memcache:
       # TODO archive
+      deb: true
+      rpm: true
     monitoring:
+      deb: true
+      rpm: true
     netbox:
       github_org: 'dm-drogeriemarkt'
+      rpm: true
     omaha:
+      deb: true
+      rpm: true
     openscap:
+      rpm: true
     ovirt_provision:
       url: 'https://github.com/theforeman/ovirt_provision_plugin'
+      rpm: 'rubygem-ovirt_provision_plugin'
     puppet:
+      deb: true
+      rpm: true
     puppetdb:
       name: 'puppetdb_foreman'
+      deb: true
+      rpm: true
     remote_execution:
+      deb: true
+      rpm: true
     rescue:
       github_org: 'dm-drogeriemarkt'
+      deb: true
+      rpm: true
     rh_cloud:
-      # Note: katello-only
+      rpm: true
+      rpm_directory: 'katello'
     salt:
+      deb: true
+      rpm: true
     scc_manager:
       github_org: 'ATIX-AG'
+      rpm: true
+      rpm_directory: 'katello'
     setup:
+      deb: true
+      rpm: true
     snapshot_management:
       github_org: 'ATIX-AG'
+      rpm: true
     spacewalk:
       # TODO: archived
       github_org: 'dm-drogeriemarkt'
       installer: false
+      rpm: true
     statistics:
+      deb: true
+      rpm: true
     supervisory_authority:
       github_org: 'timogoebel'
       installer: false
+      rpm: true
     tasks:
       name: foreman-tasks
+      deb: true
+      rpm: true
     templates:
+      deb: true
+      rpm: true
     vault:
       github_org: 'dm-drogeriemarkt'
+      rpm: true
     virt_who_configure:
+      rpm: true
+      rpm_directory: 'katello'
     webhooks:
+      deb: true
+      rpm: true
     wreckingball:
       github_org: 'dm-drogeriemarkt'
+      rpm: true
 
 smart_proxy:
   # grep -R 'foreman_proxy::plugin::provider ' puppet-foreman_proxy/manifests/plugin | cut -d\' -f2
   providers:
     dhcp_infoblox:
+      deb: true
+      rpm: true
     dhcp_remote_isc:
+      deb: true
+      rpm: true
     dns_infoblox:
+      deb: true
+      rpm: true
     dns_powerdns:
+      deb: true
+      rpm: true
     dns_route53:
       installer: false
+      deb: true
+      rpm: true
     realm_ad:
       name: smart_proxy_realm_ad_plugin
       installer: false
+      rpm: true
   modules:
     acd:
       github_org: 'ATIX-AG'
+      rpm: true
     ansible:
+      deb: true
+      rpm: true
     container_gateway:
+      # Note: not exposed directly in the installer
       github_org: 'Katello'
-      # TODO: installer? only indirectly?
+      rpm: true
     discovery:
+      deb: true
+      rpm: true
     dynflow:
+      deb: true
+      rpm: true
     monitoring:
+      deb: true
+      rpm: true
     omaha:
+      deb: true
+      rpm: true
     openscap:
+      rpm: true
     pulp:
+      # Note: not exposed directly in the installer
+      rpm: true
     remote_execution_ssh:
+      deb: true
+      rpm: true
     salt:
+      deb: true
+      rpm: true
     shellhooks:
+      deb: true
+      rpm: true
 
 installer:
   modules:

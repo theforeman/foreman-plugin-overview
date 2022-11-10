@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 
 from dataclasses import dataclass
+from typing import Optional
 
 import yaml
+
+PACKAGING_URL = 'https://github.com/theforeman/foreman-packaging'
 
 
 @dataclass
@@ -32,20 +35,52 @@ class PuppetModule(Entry): # pylint: disable=too-few-public-methods
         super().__post_init__()
 
 
-class ForemanPlugin(Entry): # pylint: disable=too-few-public-methods
+@dataclass
+class PackagedEntry(Entry): # pylint: disable=too-few-public-methods
+    rpm: Optional[str] = None
+    rpm_directory: str = 'plugins'
+    deb: Optional[str] = None
+
+    def __post_init__(self):
+        super().__post_init__()
+
+        if self.rpm is True:
+            self.rpm = f'rubygem-{self.name}'
+        if self.deb is True:
+            self.deb = f'ruby-{self.name.replace("_", "-")}'
+
+    @property
+    def rpm_url(self):
+        return f'{PACKAGING_URL}/tree/rpm/develop/packages/{self.rpm_directory}/{self.rpm}'
+
+    @property
+    def deb_url(self):
+        return f'{PACKAGING_URL}/tree/deb/develop/plugins/{self.deb}'
+
+    @property
+    def message(self):
+        msg = super().message
+        if self.rpm:
+            msg += f' ([RPM]({self.rpm_url}))'
+        if self.deb:
+            msg += f' ([deb]({self.deb_url}))'
+        return msg
+
+
+class ForemanPlugin(PackagedEntry): # pylint: disable=too-few-public-methods
     def __post_init__(self):
         if not self.name:
             self.name = f'foreman_{self.short_name}'
         super().__post_init__()
 
 
-class SmartProxyPlugin(Entry): # pylint: disable=too-few-public-methods
+class SmartProxyPlugin(PackagedEntry): # pylint: disable=too-few-public-methods
     def __post_init__(self):
         if not self.name:
             self.name = f'smart_proxy_{self.short_name}'
+        if self.deb is True:
+            self.deb = self.name.replace("-", "_")
         super().__post_init__()
-
-    # TODO: puppet acceptance tests?
 
 
 def main():
