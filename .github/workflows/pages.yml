@@ -30,9 +30,7 @@ jobs:
       - name: Install dependencies
         run: pip install mkdocs PyYAML
       - name: Process
-        run: |
-          mkdir -p docs
-          ./process > docs/index.md
+        run: ./process > docs/index.md
       - name: Build docs
         run: mkdocs build
       - name: Set up Pages
