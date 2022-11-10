@@ -18,7 +18,7 @@ foreman:
       installer: false
     discovery:
     dlm:
-      url: 'https://github.com/dm-drogeriemarkt/foreman_dlm'
+      github_org: 'dm-drogeriemarkt'
     docker:
       # TODO: archived
       installer: false
