@@ -99,3 +99,20 @@ smart_proxy:
     remote_execution_ssh:
     salt:
     shellhooks:
+
+installer:
+  modules:
+    candlepin:
+    certs:
+    dhcp:
+    dns:
+    foreman:
+    foreman_proxy:
+    foreman_proxy_content:
+    git:
+    katello:
+    pulpcore:
+    puppet:
+    puppetserver_foreman:
+    qpid:
+    tftp:
