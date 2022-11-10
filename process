@@ -45,19 +45,21 @@ class SmartProxyPlugin(Entry): # pylint: disable=too-few-public-methods
             self.name = f'smart_proxy_{self.short_name}'
         super().__post_init__()
 
+    # TODO: puppet acceptance tests?
+
 
 def main():
     with open('config.yaml', encoding='UTF-8') as f: # pylint: disable=invalid-name
         data = yaml.safe_load(f)
 
 
-    print('# Foreman')
+    print('# [Foreman](https://github.com/theforeman/foreman)')
     print('## Plugins')
     for plugin_id, plugin in data['foreman']['plugins'].items():
         foreman_plugin = ForemanPlugin(short_name=plugin_id, **(plugin or {}))
         print(foreman_plugin.message)
 
-    print('# Smart Proxy')
+    print('# [Foreman Proxy](https://github.com/theforeman/smart-proxy)')
 
     print('## Modules')
     for module_id, module in data['smart_proxy']['modules'].items():
@@ -69,7 +71,7 @@ def main():
         smart_proxy_provider = SmartProxyPlugin(short_name=provider_id, **(provider or {}))
         print(smart_proxy_provider.message)
 
-    print('# Installer')
+    print('# [Foreman Installer](https://github.com/theforeman/foreman-installer)')
     print('## Modules')
     for module_id, module in data['installer']['modules'].items():
         puppet_module = PuppetModule(short_name=module_id, **(module or {}))
