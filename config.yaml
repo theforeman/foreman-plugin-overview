@@ -206,6 +206,55 @@ smart_proxy:
       deb: true
       rpm: true
 
+cli:
+  # grep '  foreman::cli::plugin' puppet-foreman/manifests/cli/*.pp | cut -d\' -f2
+  plugins:
+    foreman_ansible:
+      rpm: true
+    foreman_azure_rm:
+      rpm: true
+      url: 'https://github.com/theforeman/foreman_azure_rm'
+    foreman_discovery:
+      deb: true
+      rpm: true
+    foreman_google:
+      deb: true
+      rpm: true
+    foreman_kubevirt:
+      rpm: true
+      puppet_acceptance_tests: false
+    foreman_openscap:
+      rpm: true
+      url: 'https://github.com/theforeman/hammer_cli_foreman_openscap'
+      puppet_acceptance_tests: false
+    foreman_puppet:
+      deb: true
+      rpm: true
+    foreman_remote_execution:
+      deb: true
+      rpm: true
+      url: 'https://github.com/theforeman/hammer_cli_foreman_remote_execution'
+    foreman_ssh:
+      deb: true
+      rpm: true
+    foreman_tasks:
+      deb: true
+      rpm: true
+    foreman_templates:
+      deb: true
+      rpm: true
+    foreman_virt_who_configure:
+      rpm: true
+      rpm_directory: 'katello'
+      puppet_acceptance_tests: false
+    foreman_webhooks:
+      deb: true
+      rpm: true
+    katello:
+      rpm: true
+      rpm_directory: 'katello'
+      github_org: 'Katello'
+
 installer:
   modules:
     candlepin:

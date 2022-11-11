@@ -5,6 +5,8 @@ from typing import Optional
 
 import yaml
 
+# OS-specific packages use this path
+DEBIAN_RELEASE = 'bullseye'
 PACKAGING_URL = 'https://github.com/theforeman/foreman-packaging'
 
 
@@ -103,6 +105,31 @@ class SmartProxyPlugin(PackagedEntry): # pylint: disable=too-few-public-methods
     def puppet_module(self):
         return 'puppet-foreman_proxy'
 
+class HammerPlugin(PackagedEntry):
+    def __post_init__(self):
+        if not self.name:
+            self.name = f'hammer_cli_{self.short_name}'
+        if not self.url:
+            # A lot of repos use dashes, unlike the gem name
+            self.url = f'https://github.com/{self.github_org}/hammer-cli-{self.short_name.replace("_", "-")}'
+        if self.deb is True:
+            self.deb = self.name.replace("-", "_")
+        if self.puppet_acceptance_tests is None:
+            self.puppet_acceptance_tests = True
+        super().__post_init__()
+
+    @property
+    def deb_url(self):
+        return f'{PACKAGING_URL}/tree/deb/develop/dependencies/{DEBIAN_RELEASE}/{self.deb}'
+
+    @property
+    def puppet_module(self):
+        return 'puppet-foreman'
+
+    @property
+    def puppet_acceptance_tests_url(self):
+        return f'https://github.com/theforeman/{self.puppet_module}/tree/master/spec/acceptance/foreman_cli_plugins_spec.rb'  # pylint: disable=line-too-long
+
 
 def main():
     with open('config.yaml', encoding='UTF-8') as f: # pylint: disable=invalid-name
@@ -132,6 +159,12 @@ def main():
     for module_id, module in data['installer']['modules'].items():
         puppet_module = PuppetModule(short_name=module_id, **(module or {}))
         print(puppet_module.message)
+
+    print('# [CLI](https://github.com/theforeman/hammer-cli)')
+    print('## Plugins')
+    for plugin_id, plugin in data['cli']['plugins'].items():
+        hammer_plugin = HammerPlugin(short_name=plugin_id, **(plugin or {}))
+        print(hammer_plugin.message)
 
 
 if __name__ == '__main__':
