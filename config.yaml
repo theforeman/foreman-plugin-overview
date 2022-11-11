@@ -227,6 +227,7 @@ cli:
   # grep '  foreman::cli::plugin' puppet-foreman/manifests/cli/*.pp | cut -d\' -f2
   plugins:
     foreman_ansible:
+      deb: true
       rpm: true
     foreman_azure_rm:
       rpm: true
