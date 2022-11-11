@@ -8,11 +8,14 @@ foreman:
     ansible:
       deb: true
       rpm: true
+      translations: true
     azure_rm:
       rpm: true
+      translations: true
     bootdisk:
       deb: true
       rpm: true
+      translations: true
     column_view:
       # TODO: drop?
       deb: true
@@ -34,6 +37,7 @@ foreman:
     discovery:
       deb: true
       rpm: true
+      translations: true
     dlm:
       github_org: 'dm-drogeriemarkt'
       rpm: true
@@ -49,6 +53,7 @@ foreman:
     google:
       deb: true
       rpm: true
+      translations: true
     hooks:
       deb: true
       rpm: true
@@ -56,8 +61,10 @@ foreman:
       rpm: true
     kubevirt:
       rpm: true
+      translations: true
     leapp:
       rpm: true
+      translations: true
     memcache:
       # TODO archive
       deb: true
@@ -79,6 +86,7 @@ foreman:
     puppet:
       deb: true
       rpm: true
+      translations: true
     puppetdb:
       name: 'puppetdb_foreman'
       deb: true
@@ -87,6 +95,7 @@ foreman:
       deb: true
       rpm: true
       puppet_acceptance_tests: 'foreman_rex_cockpit'
+      translations: true
     rescue:
       github_org: 'dm-drogeriemarkt'
       deb: true
@@ -97,16 +106,20 @@ foreman:
     salt:
       deb: true
       rpm: true
+      translations: true
     scc_manager:
       github_org: 'ATIX-AG'
       rpm: true
       rpm_directory: 'katello'
+      translations: true
     setup:
       deb: true
       rpm: true
+      translations: true
     snapshot_management:
       github_org: 'ATIX-AG'
       rpm: true
+      translations: true
     spacewalk:
       # TODO: archived
       github_org: 'dm-drogeriemarkt'
@@ -115,6 +128,7 @@ foreman:
     statistics:
       deb: true
       rpm: true
+      translations: true
     supervisory_authority:
       github_org: 'timogoebel'
       installer: false
@@ -123,15 +137,18 @@ foreman:
       name: foreman-tasks
       deb: true
       rpm: true
+      translations: true
     templates:
       deb: true
       rpm: true
+      translations: true
     vault:
       github_org: 'dm-drogeriemarkt'
       rpm: true
     virt_who_configure:
       rpm: true
       rpm_directory: 'katello'
+      translations: true
     webhooks:
       deb: true
       rpm: true
@@ -214,39 +231,49 @@ cli:
     foreman_azure_rm:
       rpm: true
       url: 'https://github.com/theforeman/foreman_azure_rm'
+      translations: true
+    # TODO: foreman_bootdisk?
     foreman_discovery:
       deb: true
       rpm: true
+      translations: true
     foreman_google:
       deb: true
       rpm: true
     foreman_kubevirt:
       rpm: true
       puppet_acceptance_tests: false
+      translations: true
     foreman_openscap:
       rpm: true
       url: 'https://github.com/theforeman/hammer_cli_foreman_openscap'
       puppet_acceptance_tests: false
+      translations: true
     foreman_puppet:
       deb: true
       rpm: true
+      translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-puppet/
     foreman_remote_execution:
       deb: true
       rpm: true
       url: 'https://github.com/theforeman/hammer_cli_foreman_remote_execution'
+      translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-remote-execution/
     foreman_ssh:
       deb: true
       rpm: true
     foreman_tasks:
       deb: true
       rpm: true
+      translations: true
     foreman_templates:
       deb: true
       rpm: true
+      translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-templates/
     foreman_virt_who_configure:
       rpm: true
       rpm_directory: 'katello'
       puppet_acceptance_tests: false
+      translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-virt-who-configure/
     foreman_webhooks:
       deb: true
       rpm: true
@@ -254,6 +281,7 @@ cli:
       rpm: true
       rpm_directory: 'katello'
       github_org: 'Katello'
+      translations: https://www.transifex.com/foreman/foreman/hammer-cli-katello/
 
 installer:
   modules:

@@ -43,6 +43,7 @@ class PackagedEntry(Entry):
     rpm_directory: str = 'plugins'
     deb: Optional[str] = None
     puppet_acceptance_tests: Optional[str] = None
+    translations: Optional[str] = None
 
     def __post_init__(self):
         super().__post_init__()
@@ -51,6 +52,9 @@ class PackagedEntry(Entry):
             self.rpm = f'rubygem-{self.name}'
         if self.deb is True:
             self.deb = f'ruby-{self.name.replace("_", "-")}'
+
+        if self.translations is True:
+            self.translations = f'https://www.transifex.com/foreman/foreman/{self.name}/'
 
     @property
     def rpm_url(self):
@@ -71,6 +75,8 @@ class PackagedEntry(Entry):
     @property
     def message(self):
         msg = super().message
+        if self.translations:
+            msg += f' ([i18n]({self.translations}))'
         if self.rpm:
             msg += f' ([RPM]({self.rpm_url}))'
         if self.deb:
