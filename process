@@ -132,6 +132,8 @@ class HammerPlugin(PackagedEntry):
 
     @property
     def deb_url(self):
+        if not self.deb:
+            return None
         return f'{PACKAGING_URL}/tree/deb/develop/dependencies/{DEBIAN_RELEASE}/{self.deb}'
 
     @property
