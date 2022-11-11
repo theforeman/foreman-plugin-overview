@@ -230,7 +230,7 @@ cli:
       rpm: true
     foreman_azure_rm:
       rpm: true
-      url: 'https://github.com/theforeman/foreman_azure_rm'
+      url: 'https://github.com/theforeman/hammer_cli_foreman_azure_rm'
       translations: true
     # TODO: foreman_bootdisk?
     foreman_discovery:
