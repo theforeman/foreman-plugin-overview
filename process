@@ -24,10 +24,13 @@ class Entry:
 
     @property
     def message(self):
-        msg = f'* [{self.short_name}]({self.url})'
-        if not self.installer:
-            msg += ' (no installer)'
-        return msg
+        return f'| [{self.short_name}]({self.url}) | {"✅" if self.installer else "❌"} |'
+
+    @staticmethod
+    def column(label, url):
+        if url:
+            return f' [{label}]({url}) |'
+        return '— |'
 
 
 class PuppetModule(Entry): # pylint: disable=too-few-public-methods
@@ -58,10 +61,14 @@ class PackagedEntry(Entry):
 
     @property
     def rpm_url(self):
+        if not self.rpm:
+            return None
         return f'{PACKAGING_URL}/tree/rpm/develop/packages/{self.rpm_directory}/{self.rpm}'
 
     @property
     def deb_url(self):
+        if not self.deb:
+            return None
         return f'{PACKAGING_URL}/tree/deb/develop/plugins/{self.deb}'
 
     @property
@@ -70,20 +77,19 @@ class PackagedEntry(Entry):
 
     @property
     def puppet_acceptance_tests_url(self):
+        if not self.puppet_acceptance_tests:
+            return None
         return f'https://github.com/theforeman/{self.puppet_module}/tree/master/spec/acceptance/{self.puppet_acceptance_tests}_spec.rb'  # pylint: disable=line-too-long
 
     @property
     def message(self):
-        msg = super().message
-        if self.translations:
-            msg += f' ([i18n]({self.translations}))'
-        if self.rpm:
-            msg += f' ([RPM]({self.rpm_url}))'
-        if self.deb:
-            msg += f' ([deb]({self.deb_url}))'
-        if self.puppet_acceptance_tests:
-            msg += f' ([acceptance]({self.puppet_acceptance_tests_url}))'
-        return msg
+        return ''.join([
+            super().message,
+            self.column('i18n', self.translations),
+            self.column('RPM', self.rpm_url),
+            self.column('deb', self.deb_url),
+            self.column('acceptance', self.puppet_acceptance_tests_url),
+        ])
 
 
 class ForemanPlugin(PackagedEntry):
@@ -143,33 +149,45 @@ def main():
 
     print('# [CLI](https://github.com/theforeman/hammer-cli)')
     print('## Plugins')
+    print('| Name | Installer | i18n | RPM | deb | Acceptance |')
+    print('|-|-|-|-|-|-|')
     for plugin_id, plugin in data['cli']['plugins'].items():
         hammer_plugin = HammerPlugin(short_name=plugin_id, **(plugin or {}))
         print(hammer_plugin.message)
+    print()
 
     print('# [Foreman](https://github.com/theforeman/foreman)')
     print('## Plugins')
+    print('| Name | Installer | i18n | RPM | deb | Acceptance |')
+    print('|-|-|-|-|-|-|')
     for plugin_id, plugin in data['foreman']['plugins'].items():
         foreman_plugin = ForemanPlugin(short_name=plugin_id, **(plugin or {}))
         print(foreman_plugin.message)
+    print()
 
     print('# [Foreman Proxy](https://github.com/theforeman/smart-proxy)')
 
     print('## Modules')
+    print('| Name | Installer | i18n | RPM | deb | Acceptance |')
+    print('|-|-|-|-|-|-|')
     for module_id, module in data['smart_proxy']['modules'].items():
         smart_proxy_module = SmartProxyPlugin(short_name=module_id, **(module or {}))
         print(smart_proxy_module.message)
+    print()
 
     print('## Providers')
+    print('| Name | Installer | i18n | RPM | deb | Acceptance |')
+    print('|-|-|-|-|-|-|')
     for provider_id, provider in data['smart_proxy']['providers'].items():
         smart_proxy_provider = SmartProxyPlugin(short_name=provider_id, **(provider or {}))
         print(smart_proxy_provider.message)
+    print()
 
     print('# [Foreman Installer](https://github.com/theforeman/foreman-installer)')
     print('## Modules')
     for module_id, module in data['installer']['modules'].items():
         puppet_module = PuppetModule(short_name=module_id, **(module or {}))
-        print(puppet_module.message)
+        print(f'* [{module_id}]({puppet_module.url})')
 
 
 if __name__ == '__main__':
