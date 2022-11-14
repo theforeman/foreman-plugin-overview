@@ -130,7 +130,6 @@ foreman:
       rpm: true
       translations: true
     supervisory_authority:
-      github_org: 'timogoebel'
       installer: false
       rpm: true
     tasks:
