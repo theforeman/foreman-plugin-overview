@@ -228,6 +228,7 @@ cli:
     foreman_ansible:
       deb: true
       rpm: true
+      translations: true
     foreman_azure_rm:
       rpm: true
       url: 'https://github.com/theforeman/hammer_cli_foreman_azure_rm'
@@ -240,6 +241,7 @@ cli:
     foreman_google:
       deb: true
       rpm: true
+      # No translations: https://github.com/theforeman/hammer-cli-foreman-google/issues/2
     foreman_kubevirt:
       rpm: true
       puppet_acceptance_tests: false
@@ -261,6 +263,7 @@ cli:
     foreman_ssh:
       deb: true
       rpm: true
+      # No translations
     foreman_tasks:
       deb: true
       rpm: true
@@ -277,6 +280,7 @@ cli:
     foreman_webhooks:
       deb: true
       rpm: true
+      # No translations: https://github.com/theforeman/hammer-cli-foreman-webhooks/issues/5
     katello:
       rpm: true
       rpm_directory: 'katello'
