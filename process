@@ -22,16 +22,6 @@ class Entry:
         if not self.url:
             self.url = f'https://github.com/{self.github_org}/{self.name}'
 
-    @property
-    def message(self):
-        return f'| [{self.short_name}]({self.url}) | {"✅" if self.installer else "❌"} |'
-
-    @staticmethod
-    def column(label, url):
-        if url:
-            return f' [{label}]({url}) |'
-        return '— |'
-
 
 class PuppetModule(Entry): # pylint: disable=too-few-public-methods
     def __post_init__(self):
@@ -80,16 +70,6 @@ class PackagedEntry(Entry):
         if not self.puppet_acceptance_tests:
             return None
         return f'https://github.com/theforeman/{self.puppet_module}/tree/master/spec/acceptance/{self.puppet_acceptance_tests}_spec.rb'  # pylint: disable=line-too-long
-
-    @property
-    def message(self):
-        return ''.join([
-            super().message,
-            self.column('i18n', self.translations),
-            self.column('RPM', self.rpm_url),
-            self.column('deb', self.deb_url),
-            self.column('acceptance', self.puppet_acceptance_tests_url),
-        ])
 
 
 class ForemanPlugin(PackagedEntry):
@@ -145,52 +125,76 @@ class HammerPlugin(PackagedEntry):
         return f'https://github.com/theforeman/{self.puppet_module}/tree/master/spec/acceptance/foreman_cli_plugins_spec.rb'  # pylint: disable=line-too-long
 
 
-def main():
+def load_config():
     with open('config.yaml', encoding='UTF-8') as f: # pylint: disable=invalid-name
         data = yaml.safe_load(f)
 
-    print('# [CLI](https://github.com/theforeman/hammer-cli)')
-    print('## Plugins')
+    data['cli']['plugins'] = [HammerPlugin(short_name=plugin_id, **(plugin or {}))
+      for plugin_id, plugin in data['cli']['plugins'].items()]
+
+    data['foreman']['plugins'] = [ForemanPlugin(short_name=plugin_id, **(plugin or {}))
+      for plugin_id, plugin in data['foreman']['plugins'].items()]
+
+    data['smart_proxy']['modules'] = [SmartProxyPlugin(short_name=module_id, **(module or {}))
+      for module_id, module in data['smart_proxy']['modules'].items()]
+
+    data['smart_proxy']['providers'] = [SmartProxyPlugin(short_name=provider_id, **(provider or {}))
+      for provider_id, provider in data['smart_proxy']['providers'].items()]
+
+    data['installer']['modules'] = [PuppetModule(short_name=module_id, **(module or {}))
+      for module_id, module in data['installer']['modules'].items()]
+
+    return data
+
+
+def markdown_link(label, url):
+    return f'[{label}]({url})' if url else '—'
+
+
+def print_markdown_table(entries):
     print('| Name | Installer | i18n | RPM | deb | Acceptance |')
     print('|-|-|-|-|-|-|')
-    for plugin_id, plugin in data['cli']['plugins'].items():
-        hammer_plugin = HammerPlugin(short_name=plugin_id, **(plugin or {}))
-        print(hammer_plugin.message)
+    for entry in entries:
+        columns = [
+            markdown_link(entry.short_name, entry.url),
+            "✅" if entry.installer else "❌",
+            markdown_link('i18n', entry.translations),
+            markdown_link('RPM', entry.rpm_url),
+            markdown_link('deb', entry.deb_url),
+            markdown_link('acceptance', entry.puppet_acceptance_tests_url),
+        ]
+
+        print(f'| {" | ".join(columns)} |')
     print()
+
+
+def render_markdown(data):
+    print('# [CLI](https://github.com/theforeman/hammer-cli)')
+    print('## Plugins')
+    print_markdown_table(data['cli']['plugins'])
 
     print('# [Foreman](https://github.com/theforeman/foreman)')
     print('## Plugins')
-    print('| Name | Installer | i18n | RPM | deb | Acceptance |')
-    print('|-|-|-|-|-|-|')
-    for plugin_id, plugin in data['foreman']['plugins'].items():
-        foreman_plugin = ForemanPlugin(short_name=plugin_id, **(plugin or {}))
-        print(foreman_plugin.message)
-    print()
+    print_markdown_table(data['foreman']['plugins'])
 
     print('# [Foreman Proxy](https://github.com/theforeman/smart-proxy)')
 
     print('## Modules')
-    print('| Name | Installer | i18n | RPM | deb | Acceptance |')
-    print('|-|-|-|-|-|-|')
-    for module_id, module in data['smart_proxy']['modules'].items():
-        smart_proxy_module = SmartProxyPlugin(short_name=module_id, **(module or {}))
-        print(smart_proxy_module.message)
-    print()
+    print_markdown_table(data['smart_proxy']['modules'])
 
     print('## Providers')
-    print('| Name | Installer | i18n | RPM | deb | Acceptance |')
-    print('|-|-|-|-|-|-|')
-    for provider_id, provider in data['smart_proxy']['providers'].items():
-        smart_proxy_provider = SmartProxyPlugin(short_name=provider_id, **(provider or {}))
-        print(smart_proxy_provider.message)
-    print()
+    print_markdown_table(data['smart_proxy']['providers'])
 
     print('# [Foreman Installer](https://github.com/theforeman/foreman-installer)')
     print('## Modules')
-    for module_id, module in data['installer']['modules'].items():
-        puppet_module = PuppetModule(short_name=module_id, **(module or {}))
-        print(f'* [{module_id}]({puppet_module.url})')
+    for puppet_module in data['installer']['modules']:
+        print(f'* {markdown_link(puppet_module.short_name, puppet_module.url)}')
 
+
+def main():
+    data = load_config()
+
+    render_markdown(data)
 
 if __name__ == '__main__':
     main()
