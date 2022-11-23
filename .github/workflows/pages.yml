@@ -29,8 +29,10 @@ jobs:
           python-version: "3"
       - name: Install dependencies
         run: pip install mkdocs PyYAML
-      - name: Process
-        run: ./process > docs/index.md
+      - name: Process markdown
+        run: ./process markdown > docs/index.md
+      - name: Process JSON
+        run: ./process json > docs/index.json
       - name: Build docs
         run: mkdocs build
       - name: Set up Pages
