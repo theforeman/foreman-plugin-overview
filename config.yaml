@@ -30,10 +30,6 @@ foreman:
     dhcp_browser:
       deb: true
       rpm: true
-    digitalocean:
-      # TODO: dropped from packaging
-      name: foreman-digitalocean
-      installer: false
     discovery:
       deb: true
       rpm: true
@@ -41,9 +37,6 @@ foreman:
     dlm:
       github_org: 'dm-drogeriemarkt'
       rpm: true
-    docker:
-      # TODO: archived
-      installer: false
     expire_hosts:
       deb: true
       rpm: true
