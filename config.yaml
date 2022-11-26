@@ -297,3 +297,11 @@ installer:
     puppetserver_foreman:
     qpid:
     tftp:
+
+auxiliary:
+  foreman-documentation:
+    description: "Official Katello documentation"
+  forklift:
+    description: "Tooling to deploy Foreman, primarily in test and development environments"
+  theforeman.org:
+    description: "Official website, including the official manual"

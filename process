@@ -19,8 +19,11 @@ class Entry:
     url: str = None
     github_org: str = 'theforeman'
     installer: bool = True
+    description: Optional[str] = None
 
     def __post_init__(self):
+        if not self.name:
+            self.name = self.short_name
         if not self.url:
             self.url = f'https://github.com/{self.github_org}/{self.name}'
 
@@ -145,6 +148,9 @@ def load_config(config):
     data['installer']['modules'] = [PuppetModule(short_name=module_id, **(module or {}))
       for module_id, module in data['installer']['modules'].items()]
 
+    data['auxiliary'] = [Entry(short_name=repository_id, **(repository or {}))
+      for repository_id, repository in data['auxiliary'].items()]
+
     return data
 
 
@@ -198,6 +204,11 @@ def render_markdown(data):
     print('## Modules')
     for puppet_module in data['installer']['modules']:
         print(f'* {markdown_link(puppet_module.short_name, puppet_module.url)}')
+    print()
+
+    print('# Auxiliary repositories')
+    for repository in data['auxiliary']:
+        print(f'* [{repository.short_name}]({repository.url}) {repository.description}')
 
 
 def render_json(data):
