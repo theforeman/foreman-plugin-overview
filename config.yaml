@@ -235,7 +235,7 @@ cli:
     foreman_google:
       deb: true
       rpm: true
-      # No translations: https://github.com/theforeman/hammer-cli-foreman-google/issues/2
+      translations: true
     foreman_kubevirt:
       rpm: true
       puppet_acceptance_tests: false
