@@ -115,11 +115,6 @@ foreman:
       github_org: 'ATIX-AG'
       rpm: true
       translations: true
-    spacewalk:
-      # TODO: archived
-      github_org: 'dm-drogeriemarkt'
-      installer: false
-      rpm: true
     statistics:
       deb: true
       rpm: true
