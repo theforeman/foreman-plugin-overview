@@ -97,6 +97,7 @@ foreman:
     rh_cloud:
       rpm: true
       rpm_directory: 'katello'
+      translations: true
     salt:
       deb: true
       rpm: true
