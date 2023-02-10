@@ -10,6 +10,7 @@ foreman:
       rpm: true
       translations: true
     azure_rm:
+      deb: true
       rpm: true
       translations: true
     bootdisk:
