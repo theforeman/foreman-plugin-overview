@@ -59,10 +59,6 @@ foreman:
     leapp:
       rpm: true
       translations: true
-    memcache:
-      # TODO archive
-      deb: true
-      rpm: true
     monitoring:
       deb: true
       rpm: true
