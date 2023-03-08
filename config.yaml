@@ -21,6 +21,10 @@ foreman:
       # TODO: drop?
       deb: true
       rpm: true
+    concrete:
+      github_org: 'timogoebel'
+      installer: false
+      rpm: true
     datacenter:
       installer: false
       deb: true
@@ -41,6 +45,10 @@ foreman:
     expire_hosts:
       deb: true
       rpm: true
+    fog_proxmox:
+      installer: false
+      deb: true
+      rpm: true
     git_templates:
       github_org: 'dm-drogeriemarkt'
       rpm: true
@@ -48,6 +56,10 @@ foreman:
       deb: true
       rpm: true
       translations: true
+    graphite:
+      installer: false
+      deb: true
+      rpm: true
     hooks:
       deb: true
       rpm: true
@@ -59,6 +71,10 @@ foreman:
     leapp:
       rpm: true
       translations: true
+    m2:
+      github_org: 'ianballou'
+      installer: false
+      rpm: true
     monitoring:
       deb: true
       rpm: true
@@ -71,9 +87,10 @@ foreman:
     openscap:
       rpm: true
       translations: true
-    ovirt_provision:
-      url: 'https://github.com/theforeman/ovirt_provision_plugin'
-      rpm: 'rubygem-ovirt_provision_plugin'
+    probing:
+      github_org: 'adamruzicka'
+      installer: false
+      rpm: true
     puppet:
       deb: true
       rpm: true
@@ -135,6 +152,9 @@ foreman:
       rpm: true
       rpm_directory: 'katello'
       translations: true
+    vmwareannotations:
+      installer: false
+      rpm: true
     webhooks:
       deb: true
       rpm: true
@@ -145,10 +165,24 @@ foreman:
 smart_proxy:
   # grep -R 'foreman_proxy::plugin::provider ' puppet-foreman_proxy/manifests/plugin | cut -d\' -f2
   providers:
+    dhcp_bluecat:
+      installer: false
+      rpm: true
+    dhcp_device42:
+      installer: false
+      rpm: true
+    dhcp_dnsmasq:
+      installer: false
+      deb: true
+      rpm: true
     dhcp_infoblox:
       deb: true
       rpm: true
     dhcp_remote_isc:
+      deb: true
+      rpm: true
+    dns_dnsmasq:
+      installer: false
       deb: true
       rpm: true
     dns_infoblox:
@@ -194,6 +228,10 @@ smart_proxy:
     openscap:
       rpm: true
       puppet_acceptance_tests: true
+    probing:
+      url: 'https://github.com/adamruzicka/smart-proxy-probing'
+      installer: false
+      rpm: 'rubygem-smart-proxy-probing'
     pulp:
       # Note: not exposed directly in the installer
       rpm: true
