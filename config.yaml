@@ -71,10 +71,6 @@ foreman:
     leapp:
       rpm: true
       translations: true
-    m2:
-      github_org: 'ianballou'
-      installer: false
-      rpm: true
     monitoring:
       deb: true
       rpm: true
