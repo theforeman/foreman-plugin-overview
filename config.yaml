@@ -32,6 +32,7 @@ foreman:
       installer: false
       deb: true
       rpm: true
+      github_team: 'theforeman/foreman-datacenter'
     default_hostgroup:
       deb: true
       rpm: true
@@ -72,7 +73,7 @@ foreman:
     hooks:
       deb: true
       rpm: true
-      github_team: 'theforeman/hooks'
+      github_team: 'theforeman/foreman-hooks'
     host_extra_validator:
       rpm: true
       github_team: 'theforeman/host-extra-validator'
@@ -155,6 +156,7 @@ foreman:
     supervisory_authority:
       installer: false
       rpm: true
+      github_team: 'theforeman/supervisory_authority'
     tasks:
       name: foreman-tasks
       deb: true
