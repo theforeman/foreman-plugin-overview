@@ -21,6 +21,10 @@ class Entry:
     installer: bool = True
     description: Optional[str] = None
 
+    @property
+    def ci_badges(self):
+        return []
+
     def __post_init__(self):
         if not self.name:
             self.name = self.short_name
@@ -29,6 +33,11 @@ class Entry:
 
 
 class PuppetModule(Entry): # pylint: disable=too-few-public-methods
+    @property
+    def ci_badges(self):
+        url = f'{self.url}/actions/workflows/ci.yml'
+        return [f"[![CI]({url}/badge.svg)]({url})"]
+
     def __post_init__(self):
         if not self.name:
             self.name = f'puppet-{self.short_name}'
@@ -212,7 +221,12 @@ def render_markdown(data):
     print('# [Foreman Installer](https://github.com/theforeman/foreman-installer)')
     print('## Modules')
     for puppet_module in data['installer']['modules']:
-        print(f'* {markdown_link(puppet_module.short_name, puppet_module.url)}')
+        line = ''
+        for badge in puppet_module.ci_badges:
+            line += f'{badge} '
+        line += f'{markdown_link(puppet_module.short_name, puppet_module.url)}'
+
+        print(f'* {line}')
     print()
 
     print('# Auxiliary repositories')
