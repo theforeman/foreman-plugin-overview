@@ -307,6 +307,7 @@ cli:
       translations: true
       github_team: 'theforeman/azure'
     foreman_bootdisk:
+      github_team: 'theforeman/bootdisk'
       deb: true
       rpm: true
       url: 'https://github.com/theforeman/hammer_cli_foreman_bootdisk'
@@ -350,6 +351,7 @@ cli:
       translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-remote-execution/
       github_team: 'theforeman/remote-execution'
     foreman_rh_cloud:
+      github_team: 'theforeman/rh-cloud'
       rpm: true
       rpm_directory: 'katello'
       installer: false
