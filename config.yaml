@@ -77,6 +77,12 @@ foreman:
     host_extra_validator:
       rpm: true
       github_team: 'theforeman/host-extra-validator'
+    katello:
+      name: 'katello'
+      rpm: true
+      translations: true
+      github_org: 'Katello'
+      rpm_directory: 'katello'
     kubevirt:
       rpm: true
       translations: true
