@@ -10,16 +10,19 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/ansible'
+      satellite: true
     azure_rm:
       deb: true
       rpm: true
       translations: true
       github_team: 'theforeman/azure'
+      satellite: true
     bootdisk:
       deb: true
       rpm: true
       translations: true
       github_team: 'theforeman/bootdisk'
+      satellite: true
     column_view:
       # TODO: drop?
       deb: true
@@ -46,6 +49,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/discovery'
+      satellite: true
     dlm:
       github_org: 'dm-drogeriemarkt'
       rpm: true
@@ -66,6 +70,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/google'
+      satellite: true
     graphite:
       installer: false
       deb: true
@@ -74,6 +79,7 @@ foreman:
       deb: true
       rpm: true
       github_team: 'theforeman/foreman-hooks'
+      satellite: true
     host_extra_validator:
       rpm: true
       github_team: 'theforeman/host-extra-validator'
@@ -83,14 +89,17 @@ foreman:
       translations: true
       github_org: 'Katello'
       rpm_directory: 'katello'
+      satellite: true
     kubevirt:
       rpm: true
       translations: true
       github_team: 'theforeman/kubevirt'
+      satellite: true
     leapp:
       rpm: true
       translations: true
       github_team: 'theforeman/foreman_leapp'
+      satellite: true
     monitoring:
       deb: true
       rpm: true
@@ -106,6 +115,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/openscap'
+      satellite: true
     probing:
       github_org: 'adamruzicka'
       installer: false
@@ -115,6 +125,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/puppet'
+      satellite: true
     puppetdb:
       name: 'puppetdb_foreman'
       deb: true
@@ -126,6 +137,7 @@ foreman:
       puppet_acceptance_tests: 'foreman_rex_cockpit'
       translations: true
       github_team: 'theforeman/remote-execution'
+      satellite: true
     rescue:
       github_org: 'dm-drogeriemarkt'
       deb: true
@@ -135,6 +147,7 @@ foreman:
       rpm_directory: 'katello'
       translations: true
       github_team: 'theforeman/rh-cloud'
+      satellite: true
     salt:
       deb: true
       rpm: true
@@ -169,11 +182,13 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/foreman-tasks'
+      satellite: true
     templates:
       deb: true
       rpm: true
       translations: true
       github_team: 'theforeman/foreman_templates'
+      satellite: true
     vault:
       github_org: 'dm-drogeriemarkt'
       rpm: true
@@ -190,6 +205,7 @@ foreman:
       deb: true
       rpm: true
       github_team: 'theforeman/webhooks'
+      satellite: true
     wreckingball:
       github_org: 'dm-drogeriemarkt'
       rpm: true
@@ -296,16 +312,19 @@ cli:
       rpm: true
       installer: false
       puppet_acceptance_tests: false
+      satellite: true
     foreman_ansible:
       deb: true
       rpm: true
       translations: true
       github_team: 'theforeman/ansible'
+      satellite: true
     foreman_azure_rm:
       rpm: true
       url: 'https://github.com/theforeman/hammer_cli_foreman_azure_rm'
       translations: true
       github_team: 'theforeman/azure'
+      satellite: true
     foreman_bootdisk:
       github_team: 'theforeman/bootdisk'
       deb: true
@@ -313,49 +332,58 @@ cli:
       url: 'https://github.com/theforeman/hammer_cli_foreman_bootdisk'
       installer: false
       puppet_acceptance_tests: false
+      satellite: true
     foreman_discovery:
       deb: true
       rpm: true
       translations: true
       github_team: 'theforeman/discovery'
+      satellite: true
     foreman_google:
       deb: true
       rpm: true
       translations: true
       github_team: 'theforeman/google'
+      satellite: true
     foreman_kubevirt:
       rpm: true
       puppet_acceptance_tests: false
       translations: true
       github_team: 'theforeman/kubevirt'
+      satellite: true
     foreman_leapp:
       rpm: true
       github_org: 'stejskalleos'
       installer: false
       puppet_acceptance_tests: false
+      satellite: true
     foreman_openscap:
       rpm: true
       url: 'https://github.com/theforeman/hammer_cli_foreman_openscap'
       puppet_acceptance_tests: false
       translations: true
       github_team: 'theforeman/openscap'
+      satellite: true
     foreman_puppet:
       deb: true
       rpm: true
       translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-puppet/
       github_team: 'theforeman/puppet'
+      satellite: true
     foreman_remote_execution:
       deb: true
       rpm: true
       url: 'https://github.com/theforeman/hammer_cli_foreman_remote_execution'
       translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-remote-execution/
       github_team: 'theforeman/remote-execution'
+      satellite: true
     foreman_rh_cloud:
       github_team: 'theforeman/rh-cloud'
       rpm: true
       rpm_directory: 'katello'
       installer: false
       puppet_acceptance_tests: false
+      satellite: true
     foreman_scc_manager:
       github_org: 'ATIX-AG'
       rpm: true
@@ -371,27 +399,32 @@ cli:
       rpm: true
       translations: true
       github_team: 'theforeman/foreman-tasks'
+      satellite: true
     foreman_templates:
       deb: true
       rpm: true
       translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-templates/
       github_team: 'theforeman/foreman_templates'
+      satellite: true
     foreman_virt_who_configure:
       rpm: true
       rpm_directory: 'katello'
       puppet_acceptance_tests: false
       translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-virt-who-configure/
       github_team: 'theforeman/virt-who-configure'
+      satellite: true
     foreman_webhooks:
       deb: true
       rpm: true
       # No translations: https://github.com/theforeman/hammer-cli-foreman-webhooks/issues/5
       github_team: 'theforeman/webhooks'
+      satellite: true
     katello:
       rpm: true
       rpm_directory: 'katello'
       github_org: 'Katello'
       translations: https://www.transifex.com/foreman/foreman/hammer-cli-katello/
+      satellite: true
 
 installer:
   modules:

@@ -52,6 +52,7 @@ class PackagedEntry(Entry):
     puppet_acceptance_tests: Optional[str] = None
     translations: Optional[str] = None
     github_team: Optional[str] = None
+    satellite: Optional[bool] = False
 
     def __post_init__(self):
         super().__post_init__()
