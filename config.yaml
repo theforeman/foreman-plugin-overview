@@ -354,6 +354,12 @@ cli:
       rpm_directory: 'katello'
       installer: false
       puppet_acceptance_tests: false
+    foreman_scc_manager:
+      github_org: 'ATIX-AG'
+      rpm: true
+      rpm_directory: 'katello'
+      installer: false
+      puppet_acceptance_tests: false
     foreman_ssh:
       deb: true
       rpm: true
