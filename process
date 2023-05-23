@@ -144,6 +144,8 @@ class HammerPlugin(PackagedEntry):
 
     @property
     def puppet_acceptance_tests_url(self):
+        if not self.puppet_acceptance_tests:
+            return None
         return f'https://github.com/theforeman/{self.puppet_module}/tree/master/spec/acceptance/foreman_cli_plugins_spec.rb'  # pylint: disable=line-too-long
 
 

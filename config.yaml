@@ -292,6 +292,10 @@ smart_proxy:
 cli:
   # grep '  foreman::cli::plugin' puppet-foreman/manifests/cli/*.pp | cut -d\' -f2
   plugins:
+    foreman_admin:
+      rpm: true
+      installer: false
+      puppet_acceptance_tests: false
     foreman_ansible:
       deb: true
       rpm: true
@@ -302,7 +306,12 @@ cli:
       url: 'https://github.com/theforeman/hammer_cli_foreman_azure_rm'
       translations: true
       github_team: 'theforeman/azure'
-    # TODO: foreman_bootdisk?
+    foreman_bootdisk:
+      deb: true
+      rpm: true
+      url: 'https://github.com/theforeman/hammer_cli_foreman_bootdisk'
+      installer: false
+      puppet_acceptance_tests: false
     foreman_discovery:
       deb: true
       rpm: true
@@ -318,6 +327,11 @@ cli:
       puppet_acceptance_tests: false
       translations: true
       github_team: 'theforeman/kubevirt'
+    foreman_leapp:
+      rpm: true
+      github_org: 'stejskalleos'
+      installer: false
+      puppet_acceptance_tests: false
     foreman_openscap:
       rpm: true
       url: 'https://github.com/theforeman/hammer_cli_foreman_openscap'
@@ -335,6 +349,11 @@ cli:
       url: 'https://github.com/theforeman/hammer_cli_foreman_remote_execution'
       translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-remote-execution/
       github_team: 'theforeman/remote-execution'
+    foreman_rh_cloud:
+      rpm: true
+      rpm_directory: 'katello'
+      installer: false
+      puppet_acceptance_tests: false
     foreman_ssh:
       deb: true
       rpm: true
