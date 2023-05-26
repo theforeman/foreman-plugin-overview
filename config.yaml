@@ -397,7 +397,7 @@ cli:
     foreman_tasks:
       deb: true
       rpm: true
-      translations: true
+      translations: https://www.transifex.com/foreman/foreman/foreman_tasks/
       github_team: 'theforeman/foreman-tasks'
       satellite: true
     foreman_templates:
