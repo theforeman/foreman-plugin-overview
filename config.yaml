@@ -310,7 +310,7 @@ cli:
   plugins:
     foreman_admin:
       rpm: true
-      translations: true
+      translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-admin/
       github_team: 'theforeman/cli'
       installer: false
       puppet_acceptance_tests: false
