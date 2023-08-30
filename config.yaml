@@ -310,6 +310,8 @@ cli:
   plugins:
     foreman_admin:
       rpm: true
+      translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-admin/
+      github_team: 'theforeman/cli'
       installer: false
       puppet_acceptance_tests: false
       satellite: true
@@ -329,6 +331,7 @@ cli:
       github_team: 'theforeman/bootdisk'
       deb: true
       rpm: true
+      translations: true
       url: 'https://github.com/theforeman/hammer_cli_foreman_bootdisk'
       installer: false
       puppet_acceptance_tests: false
@@ -397,6 +400,7 @@ cli:
     foreman_tasks:
       deb: true
       rpm: true
+      translations: true
       github_team: 'theforeman/foreman-tasks'
       satellite: true
     foreman_templates:
