@@ -387,6 +387,7 @@ cli:
       installer: false
       puppet_acceptance_tests: false
       satellite: true
+      translations: hammer-cli-foreman-rh-cloud
     foreman_scc_manager:
       github_org: 'ATIX-AG'
       rpm: true
@@ -419,7 +420,7 @@ cli:
     foreman_webhooks:
       deb: true
       rpm: true
-      # No translations: https://github.com/theforeman/hammer-cli-foreman-webhooks/issues/5
+      translations: hammer-cli-foreman-webhooks
       github_team: 'theforeman/webhooks'
       satellite: true
     katello:
