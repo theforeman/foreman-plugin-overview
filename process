@@ -3,7 +3,6 @@
 import argparse
 import json
 from dataclasses import asdict, dataclass
-from typing import Optional
 
 import yaml
 
@@ -19,7 +18,7 @@ class Entry:
     url: str = None
     github_org: str = 'theforeman'
     installer: bool = True
-    description: Optional[str] = None
+    description: str | None = None
 
     @property
     def ci_badges(self):
@@ -46,13 +45,13 @@ class PuppetModule(Entry): # pylint: disable=too-few-public-methods
 
 @dataclass
 class PackagedEntry(Entry):
-    rpm: Optional[str] = None
+    rpm: str | None = None
     rpm_directory: str = 'plugins'
-    deb: Optional[str] = None
-    puppet_acceptance_tests: Optional[str] = None
-    translations: Optional[str] = None
-    github_team: Optional[str] = None
-    satellite: Optional[bool] = False
+    deb: str | None = None
+    puppet_acceptance_tests: str | None = None
+    translations: str | None = None
+    github_team: str | None = None
+    satellite: bool | None = False
 
     def __post_init__(self):
         super().__post_init__()
