@@ -14,8 +14,8 @@ PACKAGING_URL = 'https://github.com/theforeman/foreman-packaging'
 @dataclass
 class Entry:
     short_name: str
-    name: str = None
-    url: str = None
+    name: str | None = None
+    url: str | None = None
     github_org: str = 'theforeman'
     installer: bool = True
     description: str | None = None
