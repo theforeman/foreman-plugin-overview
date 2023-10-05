@@ -49,7 +49,7 @@ class PackagedEntry(Entry):
     rpm_directory: str = 'plugins'
     deb: str | None = None
     puppet_acceptance_tests: str | None = None
-    translations: str | None = None
+    translations: str | None | bool = None
     github_team: str | None = None
     satellite: bool | None = False
 
