@@ -180,7 +180,7 @@ foreman:
       name: foreman-tasks
       deb: true
       rpm: true
-      translations: https://www.transifex.com/foreman/foreman/foreman_tasks/
+      translations: foreman_tasks
       github_team: 'theforeman/foreman-tasks'
       satellite: true
     templates:
@@ -310,7 +310,7 @@ cli:
   plugins:
     foreman_admin:
       rpm: true
-      translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-admin/
+      translations: hammer-cli-foreman-admin
       github_team: 'theforeman/cli'
       installer: false
       puppet_acceptance_tests: false
@@ -370,14 +370,14 @@ cli:
     foreman_puppet:
       deb: true
       rpm: true
-      translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-puppet/
+      translations: hammer-cli-foreman-puppet
       github_team: 'theforeman/puppet'
       satellite: true
     foreman_remote_execution:
       deb: true
       rpm: true
       url: 'https://github.com/theforeman/hammer_cli_foreman_remote_execution'
-      translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-remote-execution/
+      translations: hammer-cli-foreman-remote-execution
       github_team: 'theforeman/remote-execution'
       satellite: true
     foreman_rh_cloud:
@@ -406,14 +406,14 @@ cli:
     foreman_templates:
       deb: true
       rpm: true
-      translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-templates/
+      translations: hammer-cli-foreman-templates
       github_team: 'theforeman/foreman_templates'
       satellite: true
     foreman_virt_who_configure:
       rpm: true
       rpm_directory: 'katello'
       puppet_acceptance_tests: false
-      translations: https://www.transifex.com/foreman/foreman/hammer-cli-foreman-virt-who-configure/
+      translations: hammer-cli-foreman-virt-who-configure
       github_team: 'theforeman/virt-who-configure'
       satellite: true
     foreman_webhooks:
@@ -426,7 +426,7 @@ cli:
       rpm: true
       rpm_directory: 'katello'
       github_org: 'Katello'
-      translations: https://www.transifex.com/foreman/foreman/hammer-cli-katello/
+      translations: hammer-cli-katello
       satellite: true
 
 installer:
