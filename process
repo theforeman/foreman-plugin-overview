@@ -63,6 +63,8 @@ class PackagedEntry(Entry):
 
         if self.translations is True:
             self.translations = f'https://www.transifex.com/foreman/foreman/{self.name}/'
+        elif self.translations:
+            self.translations = f'https://www.transifex.com/foreman/foreman/{self.translations}/'
 
     @property
     def github_team_url(self):
