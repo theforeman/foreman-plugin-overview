@@ -62,9 +62,9 @@ class PackagedEntry(Entry):
             self.deb = f'ruby-{self.name.replace("_", "-")}'
 
         if self.translations is True:
-            self.translations = f'https://www.transifex.com/foreman/foreman/{self.name}/'
+            self.translations = f'https://app.transifex.com/foreman/foreman/{self.name}/'
         elif self.translations:
-            self.translations = f'https://www.transifex.com/foreman/foreman/{self.translations}/'
+            self.translations = f'https://app.transifex.com/foreman/foreman/{self.translations}/'
 
     @property
     def github_team_url(self):
