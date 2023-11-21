@@ -189,6 +189,13 @@ foreman:
       translations: true
       github_team: 'theforeman/foreman_templates'
       satellite: true
+    theme_satellite:
+      github_org: 'RedHatSatellite'
+      deb: false
+      rpm: true
+      rpm_directory: 'satellite'
+      translations: true
+      satellite: true
     vault:
       github_org: 'dm-drogeriemarkt'
       rpm: true
