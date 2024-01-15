@@ -11,6 +11,10 @@ foreman:
       translations: true
       github_team: 'theforeman/ansible'
       satellite: true
+      tests:
+        github:
+          Ruby: ruby_tests.yml
+          JavaScript: js_tests.yml
     azure_rm:
       deb: true
       rpm: true
@@ -80,6 +84,8 @@ foreman:
       rpm: true
       github_team: 'theforeman/foreman-hooks'
       satellite: true
+      tests:
+        jenkins: test_plugin_foreman_hooks_master
     host_extra_validator:
       rpm: true
       github_team: 'theforeman/host-extra-validator'
@@ -189,6 +195,10 @@ foreman:
       translations: true
       github_team: 'theforeman/foreman_templates'
       satellite: true
+      tests:
+        jenkins: test_plugin_foreman_templates_master
+        github:
+          JavaScript: js_ci.yml
     theme_satellite:
       github_org: 'RedHatSatellite'
       deb: false
@@ -196,6 +206,9 @@ foreman:
       rpm_directory: 'satellite'
       translations: true
       satellite: true
+      tests:
+        github:
+          shared: main.yml
     vault:
       github_org: 'dm-drogeriemarkt'
       rpm: true
