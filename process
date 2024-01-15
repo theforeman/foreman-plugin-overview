@@ -2,7 +2,7 @@
 
 import argparse
 import json
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 
 import yaml
 
@@ -52,6 +52,7 @@ class PackagedEntry(Entry):
     translations: str | None | bool = None
     github_team: str | None = None
     satellite: bool | None = False
+    tests: dict = field(default_factory=dict)
 
     def __post_init__(self):
         super().__post_init__()
@@ -96,8 +97,22 @@ class PackagedEntry(Entry):
         return f'https://github.com/theforeman/{self.puppet_module}/tree/master/spec/acceptance/{self.puppet_acceptance_tests}_spec.rb'  # pylint: disable=line-too-long
 
     @property
+    def github_test_urls(self):
+        return [(f'GitHub {label}', f'{self.url}/actions/workflows/{test}') for (label, test) in self.tests.get('github', {}).items()]
+
+    @property
+    def jenkins_test_urls(self):
+        if not self.tests.get('jenkins'):
+           return []
+        return [('Jenkins', f'https://ci.theforeman.org/job/{self.tests["jenkins"]}')]
+
+    @property
+    def puppet_test_urls(self):
+        return [('Puppet', self.puppet_acceptance_tests_url)]
+
+    @property
     def test_urls(self):
-        return [('puppet', self.puppet_acceptance_tests_url)]
+        return [(label, url) for (label, url) in (self.puppet_test_urls + self.github_test_urls + self.jenkins_test_urls) if url]
 
 
 class ForemanPlugin(PackagedEntry):
@@ -183,7 +198,10 @@ def markdown_link(label, url):
     return f'[{label}]({url})' if url else '—'
 
 def markdown_links(urls):
-    return ', '.join([markdown_link(label, url) for (label, url) in urls])
+    if urls:
+        return ', '.join([markdown_link(label, url) for (label, url) in urls])
+    else:
+        return '—'
 
 
 def print_markdown_table(entries, i18n=True):
