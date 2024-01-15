@@ -95,6 +95,10 @@ class PackagedEntry(Entry):
             return None
         return f'https://github.com/theforeman/{self.puppet_module}/tree/master/spec/acceptance/{self.puppet_acceptance_tests}_spec.rb'  # pylint: disable=line-too-long
 
+    @property
+    def test_urls(self):
+        return [('puppet', self.puppet_acceptance_tests_url)]
+
 
 class ForemanPlugin(PackagedEntry):
     def __post_init__(self):
@@ -178,9 +182,12 @@ def load_config(config):
 def markdown_link(label, url):
     return f'[{label}]({url})' if url else '—'
 
+def markdown_links(urls):
+    return ', '.join([markdown_link(label, url) for (label, url) in urls])
+
 
 def print_markdown_table(entries, i18n=True):
-    headers = ['Name', 'Team', 'Installer', 'RPM', 'deb', 'Acceptance']
+    headers = ['Name', 'Team', 'Installer', 'RPM', 'deb', 'Tests']
     if i18n:
         headers.append('I18n')
 
@@ -192,7 +199,7 @@ def print_markdown_table(entries, i18n=True):
             "✅" if entry.installer else "❌",
             markdown_link('RPM', entry.rpm_url),
             markdown_link('deb', entry.deb_url),
-            markdown_link('acceptance', entry.puppet_acceptance_tests_url),
+            markdown_links(entry.test_urls),
         ]
         if i18n:
             row.append(markdown_link('i18n', entry.translations))
