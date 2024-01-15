@@ -28,7 +28,7 @@ jobs:
         with:
           python-version: "3"
       - name: Install dependencies
-        run: pip install mkdocs PyYAML
+        run: pip install -r requirements.txt
       - name: Process markdown
         run: ./process markdown > docs/index.md
       - name: Process JSON
