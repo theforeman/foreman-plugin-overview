@@ -370,7 +370,7 @@ cli:
       satellite: true
     foreman_kubevirt:
       rpm: true
-      puppet_acceptance_tests: false
+      puppet_acceptance_tests: true
       translations: true
       github_team: 'theforeman/kubevirt'
       satellite: true
@@ -383,7 +383,7 @@ cli:
     foreman_openscap:
       rpm: true
       url: 'https://github.com/theforeman/hammer_cli_foreman_openscap'
-      puppet_acceptance_tests: false
+      puppet_acceptance_tests: true
       translations: true
       github_team: 'theforeman/openscap'
       satellite: true
@@ -433,7 +433,7 @@ cli:
     foreman_virt_who_configure:
       rpm: true
       rpm_directory: 'katello'
-      puppet_acceptance_tests: false
+      puppet_acceptance_tests: true
       translations: hammer-cli-foreman-virt-who-configure
       github_team: 'theforeman/virt-who-configure'
       satellite: true
