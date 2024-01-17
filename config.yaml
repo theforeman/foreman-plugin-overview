@@ -5,6 +5,10 @@ foreman:
     acd:
       github_org: 'ATIX-AG'
       rpm: true
+      tests:
+        github:
+          JavaScript: javascript_tests.yml
+          Ruby: unit_tests.yml
     ansible:
       deb: true
       rpm: true
@@ -21,12 +25,19 @@ foreman:
       translations: true
       github_team: 'theforeman/azure'
       satellite: true
+      tests:
+        github:
+          Ruby: main.yml
     bootdisk:
       deb: true
       rpm: true
       translations: true
       github_team: 'theforeman/bootdisk'
       satellite: true
+      tests:
+        github:
+          JavaScript: js_tests.yml
+          Ruby: ruby_ci.yaml
     column_view:
       # TODO: drop?
       deb: true
@@ -54,27 +65,46 @@ foreman:
       translations: true
       github_team: 'theforeman/discovery'
       satellite: true
+      tests:
+        github:
+          JavaScript: js_tests.yml
+          Ruby: ruby.yml
     dlm:
       github_org: 'dm-drogeriemarkt'
       rpm: true
+      tests:
+        github:
+          Ruby: ci.yml
     expire_hosts:
       deb: true
       rpm: true
       github_team: 'theforeman/expire-hosts'
+      tests:
+        github:
+          Ruby: ci.yml
     fog_proxmox:
       installer: false
       deb: true
       rpm: true
       github_team: 'theforeman/proxmox'
+      tests:
+        github:
+          Ruby: ci.yml
     git_templates:
       github_org: 'dm-drogeriemarkt'
       rpm: true
+      tests:
+        github:
+          Ruby: ci.yml
     google:
       deb: true
       rpm: true
       translations: true
       github_team: 'theforeman/google'
       satellite: true
+      tests:
+        github:
+          Ruby: ruby.yml
     graphite:
       installer: false
       deb: true
@@ -96,6 +126,9 @@ foreman:
       github_org: 'Katello'
       rpm_directory: 'katello'
       satellite: true
+      tests:
+        github:
+          React: react_tests.yml
     kubevirt:
       rpm: true
       translations: true
@@ -106,22 +139,39 @@ foreman:
       translations: true
       github_team: 'theforeman/foreman_leapp'
       satellite: true
+      tests:
+        github:
+          JavaScript: js_ci.yml
+          Ruby: ruby.yml
     monitoring:
       deb: true
       rpm: true
       github_team: 'theforeman/monitoring'
+      tests:
+        github:
+          Ruby: ci.yml
     netbox:
       github_org: 'dm-drogeriemarkt'
       rpm: true
+      tests:
+        github:
+          Ruby: ci.yml
     omaha:
       deb: true
       rpm: true
       github_team: 'theforeman/omaha'
+      tests:
+        github:
+          Ruby: ci.yml
     openscap:
       rpm: true
       translations: true
       github_team: 'theforeman/openscap'
       satellite: true
+      tests:
+        github:
+          JavaScript: js_tests.yml
+          Ruby: ruby_tests.yml
     probing:
       github_org: 'adamruzicka'
       installer: false
@@ -132,6 +182,10 @@ foreman:
       translations: true
       github_team: 'theforeman/puppet'
       satellite: true
+      tests:
+        github:
+          JavaScript: js_tests.yml
+          Ruby: ruby_tests.yml
     puppetdb:
       name: 'puppetdb_foreman'
       deb: true
@@ -144,26 +198,43 @@ foreman:
       translations: true
       github_team: 'theforeman/remote-execution'
       satellite: true
+      tests:
+        github:
+          JavaScript: js_ci.yml
+          Ruby: ruby_ci.yml
     rescue:
       github_org: 'dm-drogeriemarkt'
       deb: true
       rpm: true
+      tests:
+        github:
+          Ruby: ci.yml
     rh_cloud:
       rpm: true
       rpm_directory: 'katello'
       translations: true
       github_team: 'theforeman/rh-cloud'
       satellite: true
+      tests:
+        github:
+          JavaScript: js_tests.yml
+          Ruby: ruby_tests.yml
     salt:
       deb: true
       rpm: true
       translations: true
       github_team: 'theforeman/salt'
+      tests:
+        github:
+          Ruby: unit_tests.yml
     scc_manager:
       github_org: 'ATIX-AG'
       rpm: true
       rpm_directory: 'katello'
       translations: true
+      tests:
+        github:
+          Ruby: unit_tests.yaml
     setup:
       deb: true
       rpm: true
@@ -173,15 +244,26 @@ foreman:
       github_org: 'ATIX-AG'
       rpm: true
       translations: true
+      tests:
+        github:
+          Ruby: ruby.yml
+          React: react.yml
     statistics:
       deb: true
       rpm: true
       translations: true
       github_team: 'theforeman/statistics'
+      tests:
+        github:
+          JavaScript: js_tests.yml
+          Ruby: ruby_tests.yml
     supervisory_authority:
       installer: false
       rpm: true
       github_team: 'theforeman/supervisory_authority'
+      tests:
+        github:
+          Ruby: ci.yml
     tasks:
       name: foreman-tasks
       deb: true
@@ -189,6 +271,10 @@ foreman:
       translations: foreman_tasks
       github_team: 'theforeman/foreman-tasks'
       satellite: true
+      tests:
+        github:
+          JavaScript: js_tests.yml
+          Ruby: ruby_tests.yml
     templates:
       deb: true
       rpm: true
@@ -212,11 +298,17 @@ foreman:
     vault:
       github_org: 'dm-drogeriemarkt'
       rpm: true
+      tests:
+        github:
+          Ruby: ci.yml
     virt_who_configure:
       rpm: true
       rpm_directory: 'katello'
       translations: true
       github_team: 'theforeman/virt-who-configure'
+      tests:
+        github:
+          Ruby: ci.yml
     vmwareannotations:
       installer: false
       rpm: true
@@ -226,9 +318,16 @@ foreman:
       rpm: true
       github_team: 'theforeman/webhooks'
       satellite: true
+      tests:
+        github:
+          JavaScript: js_tests.yml
+          Ruby: ci.yml
     wreckingball:
       github_org: 'dm-drogeriemarkt'
       rpm: true
+      tests:
+        github:
+          Ruby: ci.yml
 
 smart_proxy:
   # grep -R 'foreman_proxy::plugin::provider ' puppet-foreman_proxy/manifests/plugin | cut -d\' -f2
