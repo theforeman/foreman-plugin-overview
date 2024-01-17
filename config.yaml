@@ -404,8 +404,8 @@ cli:
       github_team: 'theforeman/rh-cloud'
       rpm: true
       rpm_directory: 'katello'
-      installer: false
-      puppet_acceptance_tests: false
+      installer: true
+      puppet_acceptance_tests: true
       satellite: true
       translations: hammer-cli-foreman-rh-cloud
     foreman_scc_manager:
