@@ -475,10 +475,11 @@ cli:
       satellite: true
     foreman_leapp:
       rpm: true
-      github_org: 'stejskalleos'
+      github_team: 'theforeman/foreman_leapp'
       installer: false
       puppet_acceptance_tests: false
       satellite: true
+      translations: true
     foreman_openscap:
       rpm: true
       url: 'https://github.com/theforeman/hammer_cli_foreman_openscap'
