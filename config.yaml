@@ -226,7 +226,7 @@ foreman:
       github_team: 'theforeman/salt'
       tests:
         github:
-          Ruby: unit_tests.yml
+          Ruby: ruby_tests.yml
     scc_manager:
       github_org: 'ATIX-AG'
       rpm: true
