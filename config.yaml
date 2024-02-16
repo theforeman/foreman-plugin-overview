@@ -83,7 +83,7 @@ foreman:
         github:
           Ruby: ci.yml
     fog_proxmox:
-      installer: false
+      installer: true
       deb: true
       rpm: true
       github_team: 'theforeman/proxmox'
