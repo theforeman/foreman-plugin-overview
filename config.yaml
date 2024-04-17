@@ -17,8 +17,8 @@ foreman:
       satellite: true
       tests:
         github:
-          Ruby: ruby_tests.yml
           JavaScript: js_tests.yml
+          Ruby: ruby_tests.yml
     azure_rm:
       deb: true
       rpm: true
@@ -128,7 +128,8 @@ foreman:
       satellite: true
       tests:
         github:
-          React: react_tests.yml
+          JavaScript: react_tests.yml
+          Ruby: ruby.yml
     kubevirt:
       rpm: true
       translations: true
@@ -246,8 +247,8 @@ foreman:
       translations: true
       tests:
         github:
+          JavaScript: react.yml
           Ruby: ruby.yml
-          React: react.yml
     statistics:
       deb: true
       rpm: true
@@ -294,7 +295,7 @@ foreman:
       satellite: true
       tests:
         github:
-          shared: main.yml
+          Ruby: main.yml
     vault:
       github_org: 'dm-drogeriemarkt'
       rpm: true
