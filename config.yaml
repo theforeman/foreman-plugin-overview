@@ -8,7 +8,7 @@ foreman:
       tests:
         github:
           JavaScript: javascript_tests.yml
-          Ruby: unit_tests.yml
+          Ruby: ruby_tests.yml
     ansible:
       deb: true
       rpm: true
@@ -115,10 +115,14 @@ foreman:
       github_team: 'theforeman/foreman-hooks'
       satellite: true
       tests:
-        jenkins: test_plugin_foreman_hooks_master
+        github:
+          Ruby: ruby_ci.yml
     host_extra_validator:
       rpm: true
       github_team: 'theforeman/host-extra-validator'
+      tests:
+        github:
+          Ruby: ruby_ci.yml
     katello:
       name: 'katello'
       rpm: true
@@ -135,6 +139,9 @@ foreman:
       translations: true
       github_team: 'theforeman/kubevirt'
       satellite: true
+      tests:
+        github:
+          Ruby: ruby.yml
     leapp:
       rpm: true
       translations: true
@@ -192,6 +199,9 @@ foreman:
       deb: true
       rpm: true
       github_team: 'theforeman/puppetdb'
+      tests:
+        github:
+          Ruby: ruby_test.yml
     remote_execution:
       deb: true
       rpm: true
@@ -235,6 +245,7 @@ foreman:
       translations: true
       tests:
         github:
+          JavaScript: js_tests.yml
           Ruby: unit_tests.yaml
     setup:
       deb: true
@@ -283,9 +294,9 @@ foreman:
       github_team: 'theforeman/foreman_templates'
       satellite: true
       tests:
-        jenkins: test_plugin_foreman_templates_master
         github:
           JavaScript: js_ci.yml
+          Ruby: ruby_ci.yml
     theme_satellite:
       github_org: 'RedHatSatellite'
       deb: false
