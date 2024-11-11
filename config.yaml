@@ -441,7 +441,7 @@ cli:
   plugins:
     foreman_admin:
       rpm: true
-      translations: hammer-cli-foreman-admin
+      translations: true
       github_team: 'theforeman/cli'
       installer: false
       puppet_acceptance_tests: false
