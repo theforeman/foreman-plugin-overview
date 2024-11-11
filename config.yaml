@@ -502,14 +502,14 @@ cli:
     foreman_puppet:
       deb: true
       rpm: true
-      translations: hammer-cli-foreman-puppet
+      translations: true
       github_team: 'theforeman/puppet'
       satellite: true
     foreman_remote_execution:
       deb: true
       rpm: true
       url: 'https://github.com/theforeman/hammer_cli_foreman_remote_execution'
-      translations: hammer-cli-foreman-remote-execution
+      translations: true
       github_team: 'theforeman/remote-execution'
       satellite: true
     foreman_rh_cloud:
@@ -519,7 +519,7 @@ cli:
       installer: true
       puppet_acceptance_tests: true
       satellite: true
-      translations: hammer-cli-foreman-rh-cloud
+      translations: true
     foreman_scc_manager:
       github_org: 'ATIX-AG'
       rpm: true
@@ -539,27 +539,27 @@ cli:
     foreman_templates:
       deb: true
       rpm: true
-      translations: hammer-cli-foreman-templates
+      translations: true
       github_team: 'theforeman/foreman_templates'
       satellite: true
     foreman_virt_who_configure:
       rpm: true
       rpm_directory: 'katello'
       puppet_acceptance_tests: true
-      translations: hammer-cli-foreman-virt-who-configure
+      translations: true
       github_team: 'theforeman/virt-who-configure'
       satellite: true
     foreman_webhooks:
       deb: true
       rpm: true
-      translations: hammer-cli-foreman-webhooks
+      translations: true
       github_team: 'theforeman/webhooks'
       satellite: true
     katello:
       rpm: true
       rpm_directory: 'katello'
       github_org: 'Katello'
-      translations: hammer-cli-katello
+      translations: true
       satellite: true
 
 installer:
