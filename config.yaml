@@ -541,6 +541,7 @@ cli:
       rpm_directory: 'katello'
       installer: false
       puppet_acceptance_tests: false
+      translations: true
     foreman_ssh:
       deb: true
       rpm: true
