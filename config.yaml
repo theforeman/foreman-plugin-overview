@@ -521,6 +521,12 @@ cli:
       translations: true
       github_team: 'theforeman/remote-execution'
       satellite: true
+    foreman_resource_quota:
+      github_org: 'ATIX-AG'
+      installer: false
+      rpm: true
+      translations: true
+      puppet_acceptance_tests: false
     foreman_rh_cloud:
       github_team: 'theforeman/rh-cloud'
       rpm: true
