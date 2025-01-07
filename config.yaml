@@ -220,6 +220,15 @@ foreman:
       tests:
         github:
           Ruby: ci.yml
+    resource_quota:
+      github_org: 'ATIX-AG'
+      installer: false
+      rpm: true
+      translations: true
+      tests:
+        github:
+          JavaScript: js_tests.yml
+          Ruby: ruby_tests.yml
     rh_cloud:
       rpm: true
       rpm_directory: 'katello'
