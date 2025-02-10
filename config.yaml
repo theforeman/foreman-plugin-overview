@@ -535,6 +535,13 @@ cli:
       puppet_acceptance_tests: true
       satellite: true
       translations: true
+    foreman_salt:
+      deb: true
+      rpm: true
+      installer: false
+      puppet_acceptance_tests: false
+      url: 'https://github.com/theforeman/hammer_cli_foreman_salt'
+      github_team: 'theforeman/salt'
     foreman_scc_manager:
       github_org: 'ATIX-AG'
       rpm: true
