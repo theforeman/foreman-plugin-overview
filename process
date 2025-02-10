@@ -7,7 +7,7 @@ from dataclasses import asdict, dataclass, field
 import yaml
 
 # OS-specific packages use this path
-DEBIAN_RELEASE = 'bullseye'
+DEBIAN_RELEASE = 'bookworm'
 PACKAGING_URL = 'https://github.com/theforeman/foreman-packaging'
 
 
