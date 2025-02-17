@@ -222,7 +222,7 @@ foreman:
           Ruby: ci.yml
     resource_quota:
       github_org: 'ATIX-AG'
-      installer: false
+      installer: true
       rpm: true
       translations: true
       tests:
@@ -523,7 +523,7 @@ cli:
       satellite: true
     foreman_resource_quota:
       github_org: 'ATIX-AG'
-      installer: false
+      installer: true
       rpm: true
       translations: true
       puppet_acceptance_tests: false
