@@ -327,6 +327,7 @@ foreman:
       rpm_directory: 'katello'
       translations: true
       github_team: 'theforeman/virt-who-configure'
+      satellite: true
       tests:
         github:
           Ruby: ci.yml
