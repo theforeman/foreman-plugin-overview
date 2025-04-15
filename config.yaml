@@ -338,6 +338,7 @@ foreman:
     webhooks:
       deb: true
       rpm: true
+      translations: true
       github_team: 'theforeman/webhooks'
       satellite: true
       tests:
