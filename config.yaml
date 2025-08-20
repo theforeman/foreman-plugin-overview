@@ -180,6 +180,11 @@ foreman:
         github:
           JavaScript: js_tests.yml
           Ruby: ruby_tests.yml
+    ovirt:
+      github_org: 'markt-de'
+      deb: true
+      rpm: true
+      github_team: 'theforeman/ovirt'
     probing:
       github_org: 'adamruzicka'
       installer: false
