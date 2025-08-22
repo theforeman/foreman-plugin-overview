@@ -29,12 +29,8 @@ jobs:
           python-version: "3"
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Process markdown
-        run: ./process markdown > docs/index.md
-      - name: Process JSON
-        run: ./process json > docs/index.json
       - name: Build docs
-        run: mkdocs build
+        run: make build
       - name: Set up Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
