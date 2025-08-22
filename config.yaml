@@ -373,6 +373,7 @@ smart_proxy:
     dhcp_infoblox:
       deb: true
       rpm: true
+      github_team: theforeman/proxy-infoblox
     dhcp_remote_isc:
       deb: true
       rpm: true
@@ -383,6 +384,7 @@ smart_proxy:
     dns_infoblox:
       deb: true
       rpm: true
+      github_team: theforeman/proxy-infoblox
     dns_powerdns:
       deb: true
       rpm: true
