@@ -134,6 +134,13 @@ foreman:
         github:
           JavaScript: react_tests.yml
           Ruby: ruby.yml
+    kernel_care:
+      rpm: true
+      rpm_directory: 'katello'
+      github_team: 'theforeman/foreman_kernel_care'
+      tests:
+        github:
+          Ruby: unit_tests.yaml
     kubevirt:
       rpm: true
       translations: true
@@ -171,6 +178,8 @@ foreman:
       tests:
         github:
           Ruby: ci.yml
+    opennebula:
+      github_team: 'theforeman/opennebula'
     openscap:
       rpm: true
       translations: true
@@ -604,6 +613,7 @@ installer:
     foreman_proxy:
     foreman_proxy_content:
     git:
+    iop:
     katello:
     pulpcore:
     puppet:
