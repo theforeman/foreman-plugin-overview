@@ -612,13 +612,11 @@ installer:
     foreman:
     foreman_proxy:
     foreman_proxy_content:
-    git:
     iop:
     katello:
     pulpcore:
     puppet:
     puppetserver_foreman:
-    qpid:
     tftp:
 
 auxiliary:
