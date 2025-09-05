@@ -194,10 +194,6 @@ foreman:
       deb: true
       rpm: true
       github_team: 'theforeman/ovirt'
-    probing:
-      github_org: 'adamruzicka'
-      installer: false
-      rpm: true
     puppet:
       deb: true
       rpm: true
@@ -440,10 +436,6 @@ smart_proxy:
       rpm: true
       puppet_acceptance_tests: true
       github_team: 'theforeman/openscap'
-    probing:
-      url: 'https://github.com/adamruzicka/smart-proxy-probing'
-      installer: false
-      rpm: 'rubygem-smart-proxy-probing'
     pulp:
       # Note: not exposed directly in the installer
       rpm: true
