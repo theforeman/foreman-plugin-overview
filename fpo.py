@@ -15,6 +15,7 @@ class Entry:
     github_org: str = 'theforeman'
     installer: bool = True
     description: str | None = None
+    release_action: str | None = None
 
     @property
     def ci_badges(self):
@@ -36,6 +37,7 @@ class PuppetModule(Entry): # pylint: disable=too-few-public-methods
     def __post_init__(self):
         if not self.name:
             self.name = f'puppet-{self.short_name}'
+        self.release_action = 'voxpupuli/gha-puppet/.github/workflows/release.yml'
         super().__post_init__()
 
 
@@ -115,6 +117,7 @@ class ForemanPlugin(PackagedEntry):
     def __post_init__(self):
         if not self.name:
             self.name = f'foreman_{self.short_name}'
+        self.release_action = 'voxpupuli/ruby-release'
         super().__post_init__()
 
     @property
@@ -130,6 +133,7 @@ class SmartProxyPlugin(PackagedEntry): # pylint: disable=too-few-public-methods
             self.deb = self.name.replace("-", "_")
         if self.puppet_acceptance_tests is True:
             self.puppet_acceptance_tests = self.short_name
+        self.release_action = 'voxpupuli/ruby-release'
         super().__post_init__()
 
     @property
@@ -147,6 +151,7 @@ class HammerPlugin(PackagedEntry):
             self.deb = self.name.replace("-", "_")
         if self.puppet_acceptance_tests is None:
             self.puppet_acceptance_tests = True
+        self.release_action = 'voxpupuli/ruby-release'
         super().__post_init__()
 
     @property
