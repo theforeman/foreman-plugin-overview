@@ -165,6 +165,18 @@ class HammerPlugin(PackagedEntry):
             return None
         return f'https://github.com/theforeman/{self.puppet_module}/tree/master/spec/acceptance/foreman_cli_plugins_spec.rb'  # pylint: disable=line-too-long
 
+@dataclass
+class ClientThing(PackagedEntry):
+    rpm_directory: str = 'client'
+    installer: bool = False
+
+    def __post_init__(self):
+        if self.rpm is True:
+            self.rpm = self.short_name
+        if self.deb is True:
+            self.deb = self.short_name
+        super().__post_init__()
+
 
 def load_config(config):
     data = yaml.safe_load(config)
@@ -183,6 +195,9 @@ def load_config(config):
 
     data['installer']['modules'] = [PuppetModule(short_name=module_id, **(module or {}))
       for module_id, module in data['installer']['modules'].items()]
+
+    data['client'] = [ClientThing(short_name=repository_id, **(repository or {}))
+      for repository_id, repository in data['client'].items()]
 
     data['auxiliary'] = [Entry(short_name=repository_id, **(repository or {}))
       for repository_id, repository in data['auxiliary'].items()]
