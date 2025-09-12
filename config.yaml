@@ -611,6 +611,27 @@ installer:
     puppetserver_foreman:
     tftp:
 
+client:
+  ansible-foreman_scap_client:
+    installer: true
+    rpm: true
+    rpm_directory: plugins
+  foreman_scap_client:
+    rpm: true
+  foreman_scap_client_bash:
+    rpm: true
+  foreman_ygg_worker:
+    rpm: true
+  katello-pull-transport-migrate:
+    rpm: true
+  katello-host-tools:
+    rpm: true
+    github_org: 'Katello'
+  puppet-foreman_scap_client:
+    installer: true
+    rpm: true
+    rpm_directory: plugins
+
 auxiliary:
   foreman-documentation:
     description: "Official Katello documentation"
