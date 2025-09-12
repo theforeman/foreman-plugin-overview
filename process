@@ -70,6 +70,9 @@ def render_markdown(data):
         print(f'* {line}')
     print()
 
+    print('# Libraries')
+    print_markdown_table(data['libraries'], i18n=False)
+
     print('# Client')
     print_markdown_table(data['client'], i18n=False)
 

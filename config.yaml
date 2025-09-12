@@ -632,6 +632,40 @@ client:
     rpm: true
     rpm_directory: plugins
 
+libraries:
+  apipie-bindings:
+    github_org: Apipie
+    deb: true
+    rpm: true
+  apipie-dsl:
+    github_org: Apipie
+    deb: true
+    rpm: true
+  apipie-rails:
+    github_org: Apipie
+    deb: true
+    rpm: true
+  journald-logger:
+    deb: true
+    rpm: true
+  journald-native:
+    deb: true
+    rpm: true
+  kafo:
+    deb: true
+    rpm: true
+  kafo_parsers:
+    deb: true
+    rpm: true
+  kafo_wizards:
+    deb: true
+    rpm: true
+  ldap_fluff:
+    rpm: true
+  obsah:
+  safemode:
+    rpm: true
+
 auxiliary:
   foreman-documentation:
     description: "Official Katello documentation"
