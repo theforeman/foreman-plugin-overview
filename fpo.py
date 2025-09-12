@@ -44,6 +44,7 @@ class PackagedEntry(Entry):
     rpm: str | None = None
     rpm_directory: str = 'plugins'
     deb: str | None = None
+    deb_directory: str = 'plugins'
     puppet_acceptance_tests: str | None = None
     translations: str | None | bool = None
     github_team: str | None = None
@@ -80,7 +81,7 @@ class PackagedEntry(Entry):
     def deb_url(self):
         if not self.deb:
             return None
-        return f'{PACKAGING_URL}/tree/deb/develop/plugins/{self.deb}'
+        return f'{PACKAGING_URL}/tree/deb/develop/{self.deb_directory}/{self.deb}'
 
     @property
     def puppet_module(self):
@@ -136,7 +137,10 @@ class SmartProxyPlugin(PackagedEntry): # pylint: disable=too-few-public-methods
     def puppet_module(self):
         return 'puppet-foreman_proxy'
 
+@dataclass
 class HammerPlugin(PackagedEntry):
+    deb_directory: str = f'dependencies/{DEBIAN_RELEASE}'
+
     def __post_init__(self):
         if not self.name:
             self.name = f'hammer_cli_{self.short_name}'
@@ -150,12 +154,6 @@ class HammerPlugin(PackagedEntry):
         super().__post_init__()
 
     @property
-    def deb_url(self):
-        if not self.deb:
-            return None
-        return f'{PACKAGING_URL}/tree/deb/develop/dependencies/{DEBIAN_RELEASE}/{self.deb}'
-
-    @property
     def puppet_module(self):
         return 'puppet-foreman'
 
@@ -164,6 +162,30 @@ class HammerPlugin(PackagedEntry):
         if not self.puppet_acceptance_tests:
             return None
         return f'https://github.com/theforeman/{self.puppet_module}/tree/master/spec/acceptance/foreman_cli_plugins_spec.rb'  # pylint: disable=line-too-long
+
+@dataclass
+class ClientThing(PackagedEntry):
+    rpm_directory: str = 'client'
+    installer: bool = False
+
+    def __post_init__(self):
+        if self.rpm is True:
+            self.rpm = self.short_name
+        if self.deb is True:
+            self.deb = self.short_name
+        super().__post_init__()
+
+
+@dataclass
+class Library(PackagedEntry):
+    deb_directory: str = f'dependencies/{DEBIAN_RELEASE}'
+    rpm_directory: str = 'foreman'
+    installer: bool = False
+
+    def __post_init__(self):
+        if self.deb is True:
+            self.deb = self.short_name
+        super().__post_init__()
 
 
 def load_config(config):
@@ -183,6 +205,12 @@ def load_config(config):
 
     data['installer']['modules'] = [PuppetModule(short_name=module_id, **(module or {}))
       for module_id, module in data['installer']['modules'].items()]
+
+    data['client'] = [ClientThing(short_name=repository_id, **(repository or {}))
+      for repository_id, repository in data['client'].items()]
+
+    data['libraries'] = [Library(short_name=repository_id, **(repository or {}))
+      for repository_id, repository in data['libraries'].items()]
 
     data['auxiliary'] = [Entry(short_name=repository_id, **(repository or {}))
       for repository_id, repository in data['auxiliary'].items()]
