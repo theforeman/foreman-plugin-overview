@@ -645,6 +645,10 @@ libraries:
     github_org: Apipie
     deb: true
     rpm: true
+  dynflow:
+    github_org: Dynflow
+    deb: true
+    rpm: true
   journald-logger:
     deb: true
     rpm: true
