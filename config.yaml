@@ -14,6 +14,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/ansible'
+      redmine: true
       satellite: true
       tests:
         github:
@@ -24,6 +25,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/azure'
+      redmine: azurerm
       satellite: true
       tests:
         github:
@@ -33,6 +35,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/bootdisk'
+      redmine: true
       satellite: true
       tests:
         github:
@@ -64,6 +67,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/discovery'
+      redmine: true
       satellite: true
       tests:
         github:
@@ -101,6 +105,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/google'
+      redmine: foreman_google
       satellite: true
       tests:
         github:
@@ -129,6 +134,7 @@ foreman:
       translations: true
       github_org: 'Katello'
       rpm_directory: 'katello'
+      redmine: true
       satellite: true
       tests:
         github:
@@ -145,6 +151,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/kubevirt'
+      redmine: true
       satellite: true
       tests:
         github:
@@ -153,6 +160,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/foreman_leapp'
+      redmine: true
       satellite: true
       tests:
         github:
@@ -184,6 +192,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/openscap'
+      redmine: foreman_openscap
       satellite: true
       tests:
         github:
@@ -199,6 +208,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/puppet'
+      redmine: foreman_puppet
       satellite: true
       tests:
         github:
@@ -218,6 +228,7 @@ foreman:
       puppet_acceptance_tests: 'foreman_rex_cockpit'
       translations: true
       github_team: 'theforeman/remote-execution'
+      redmine: foreman_remote_execution
       satellite: true
       tests:
         github:
@@ -254,6 +265,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/salt'
+      redmine: true
       tests:
         github:
           Ruby: ruby_tests.yml
@@ -271,6 +283,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/foreman-setup'
+      redmine: foreman_setup
     snapshot_management:
       github_org: 'ATIX-AG'
       rpm: true
@@ -284,6 +297,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/statistics'
+      redmine: true
       tests:
         github:
           JavaScript: js_tests.yml
@@ -301,6 +315,7 @@ foreman:
       rpm: true
       translations: foreman_tasks
       github_team: 'theforeman/foreman-tasks'
+      redmine: true
       satellite: true
       tests:
         github:
@@ -311,6 +326,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/foreman_templates'
+      redmine: true
       satellite: true
       tests:
         github:
@@ -337,6 +353,7 @@ foreman:
       rpm_directory: 'katello'
       translations: true
       github_team: 'theforeman/virt-who-configure'
+      redmine: virt-who-configure
       satellite: true
       tests:
         github:
@@ -350,6 +367,7 @@ foreman:
       rpm: true
       translations: true
       github_team: 'theforeman/webhooks'
+      redmine: true
       satellite: true
       tests:
         github:

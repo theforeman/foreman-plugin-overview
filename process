@@ -17,7 +17,7 @@ def markdown_links(urls):
 
 
 def print_markdown_table(entries, i18n=True):
-    headers = ['Name', 'Team', 'Installer', 'RPM', 'deb', 'Tests']
+    headers = ['Name', 'Team', 'Installer', 'RPM', 'deb', 'Tests', 'Issues']
     if i18n:
         headers.append('I18n')
 
@@ -30,6 +30,7 @@ def print_markdown_table(entries, i18n=True):
             markdown_link('RPM', entry.rpm_url),
             markdown_link('deb', entry.deb_url),
             markdown_links(entry.test_urls),
+            markdown_link('Issues', entry.issues_url),
         ]
         if i18n:
             row.append(markdown_link('i18n', entry.translations))
