@@ -38,10 +38,6 @@ foreman:
         github:
           JavaScript: js_tests.yml
           Ruby: ruby_ci.yaml
-    column_view:
-      # TODO: drop?
-      deb: true
-      rpm: true
     concrete:
       github_org: 'timogoebel'
       installer: false
