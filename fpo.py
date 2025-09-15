@@ -12,6 +12,8 @@ class Entry:
     short_name: str
     name: str | None = None
     url: str | None = None
+    redmine: str | None = None
+    issues_url: str | None = None
     github_org: str = 'theforeman'
     installer: bool = True
     description: str | None = None
@@ -25,6 +27,13 @@ class Entry:
             self.name = self.short_name
         if not self.url:
             self.url = f'https://github.com/{self.github_org}/{self.name}'
+        if self.redmine is True:
+            self.redmine = self.short_name
+        if not self.issues_url:
+            if self.redmine:
+                self.issues_url = f'https://projects.theforeman.org/projects/{self.redmine}/issues'
+            else:
+                self.issues_url = f'https://github.com/{self.github_org}/{self.name}/issues'
 
 
 class PuppetModule(Entry): # pylint: disable=too-few-public-methods
