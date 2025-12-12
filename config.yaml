@@ -690,6 +690,7 @@ libraries:
   ldap_fluff:
     rpm: true
   obsah:
+    rpm: python-obsah
   safemode:
     rpm: true
 
