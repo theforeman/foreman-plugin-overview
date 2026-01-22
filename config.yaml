@@ -105,6 +105,14 @@ foreman:
       installer: false
       deb: true
       rpm: true
+    hdm:
+      deb: true
+      rpm: true
+      github_team: 'theforeman/betadots'
+      github_org: 'betadots'
+      tests:
+        github:
+          Ruby: ci.yaml
     hooks:
       deb: true
       rpm: true
@@ -167,6 +175,14 @@ foreman:
       tests:
         github:
           Ruby: ci.yml
+    openbolt:
+      github_org: 'overlookinfra'
+      deb: true
+      rpm: true
+      github_team: 'theforeman/overlookinfra' # also theforeman/betadots
+      tests:
+        github:
+          Ruby: test.yml
     omaha:
       deb: true
       rpm: true
@@ -420,6 +436,11 @@ smart_proxy:
       rpm: true
       puppet_acceptance_tests: true
       github_team: 'theforeman/remote-execution'
+    hdm:
+      deb: true
+      rpm: true
+      github_team: 'theforeman/betadots'
+      github_org: 'betadots'
     monitoring:
       deb: true
       rpm: true
@@ -428,6 +449,12 @@ smart_proxy:
       deb: true
       rpm: true
       github_team: 'theforeman/omaha'
+    openbolt:
+      deb: true
+      rpm: true
+      github_team: 'theforeman/overlookinfra' # also theforeman/betadots
+      github_org: 'overlookinfra'
+      puppet_acceptance_tests: 'openbolt'
     openscap:
       rpm: true
       puppet_acceptance_tests: true
