@@ -2,13 +2,6 @@
 foreman:
   # Based on grep 'foreman::plugin ' puppet-foreman/manifests/plugin/*.pp | cut -d\' -f2
   plugins:
-    acd:
-      github_org: 'ATIX-AG'
-      rpm: true
-      tests:
-        github:
-          JavaScript: javascript_tests.yml
-          Ruby: ruby_tests.yml
     ansible:
       deb: true
       rpm: true
@@ -432,9 +425,6 @@ smart_proxy:
       installer: false
       rpm: true
   modules:
-    acd:
-      github_org: 'ATIX-AG'
-      rpm: true
     ansible:
       deb: true
       rpm: true
