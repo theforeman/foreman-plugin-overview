@@ -292,6 +292,7 @@ foreman:
     snapshot_management:
       github_org: 'ATIX-AG'
       rpm: true
+      deb: true
       translations: true
       tests:
         github:
