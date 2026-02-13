@@ -248,6 +248,7 @@ foreman:
           Ruby: ci.yml
     resource_quota:
       github_org: 'ATIX-AG'
+      github_team: 'theforeman/atix'
       installer: true
       rpm: true
       translations: true
@@ -276,6 +277,7 @@ foreman:
           Ruby: ruby_tests.yml
     scc_manager:
       github_org: 'ATIX-AG'
+      github_team: 'theforeman/atix'
       rpm: true
       rpm_directory: 'katello'
       translations: true
@@ -291,6 +293,7 @@ foreman:
       redmine: foreman_setup
     snapshot_management:
       github_org: 'ATIX-AG'
+      github_team: 'theforeman/atix'
       rpm: true
       deb: true
       translations: true
