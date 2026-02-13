@@ -428,6 +428,10 @@ smart_proxy:
       name: smart_proxy_realm_ad_plugin
       installer: false
       rpm: true
+    request_forwarder:
+      name: smart_proxy_request_forwarder
+      installer: false
+      rpm: true
   modules:
     ansible:
       deb: true
