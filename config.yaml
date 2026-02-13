@@ -212,6 +212,17 @@ foreman:
         github:
           JavaScript: js_tests.yml
           Ruby: ruby_tests.yml
+    opentofu:
+      github_org: 'ATIX-AG'
+      github_team: 'theforeman/atix'
+      installer: true
+      rpm: true
+      deb: true
+      translations: true
+      tests:
+        github:
+          JavaScript: js_tests.yml
+          Ruby: ruby.yml
     ovirt:
       github_org: 'markt-de'
       deb: true
