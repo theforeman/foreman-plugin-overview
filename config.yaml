@@ -429,6 +429,8 @@ smart_proxy:
       installer: false
       rpm: true
     request_forwarder:
+      github_org: 'ATIX-AG'
+      github_team: 'theforeman/atix'
       name: smart_proxy_request_forwarder
       installer: false
       rpm: true
@@ -572,6 +574,7 @@ cli:
       satellite: true
     foreman_resource_quota:
       github_org: 'ATIX-AG'
+      github_team: 'theforeman/atix'
       installer: true
       rpm: true
       translations: true
@@ -592,6 +595,7 @@ cli:
       url: 'https://github.com/theforeman/hammer_cli_foreman_salt'
       github_team: 'theforeman/salt'
     foreman_scc_manager:
+      github_team: 'theforeman/atix'
       github_org: 'ATIX-AG'
       rpm: true
       rpm_directory: 'katello'
