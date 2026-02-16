@@ -1,0 +1,121 @@
+#!/usr/bin/env python
+
+import argparse
+
+import requests
+
+from itertools import chain
+from fpo import load_config
+
+REPOS_URL = 'https://api.github.com/orgs/%(owner)s/repos'
+ORGS = ['theforeman']
+
+EXCLUDED_REPOS = [
+
+  #'theforeman/ansible-foreman_scap_client',
+  #'theforeman/foreman-ansible-modules',
+  #'theforeman/foreman-discovery-image',
+  #'theforeman/foreman-fapolicyd',
+  #'theforeman/foreman-installer',
+  #'theforeman/foreman-mcp-server',
+  #'theforeman/foreman-operations-collection',
+  #'theforeman/foreman-selinux',
+  #'theforeman/foreman_kernel_care',
+  #'theforeman/foreman_maintain',
+  #'theforeman/foreman_opennebula',
+  #'theforeman/foreman_scap_client',
+  #'theforeman/foreman_scap_client_bash',
+  #'theforeman/foreman_ygg_worker',
+  #'theforeman/foremanctl',
+  #'theforeman/hammer-cli'
+  #'theforeman/hammer-cli-foreman',
+  #'theforeman/hammer-cli-foreman-statistics',
+  #'theforeman/journald-logger',
+  #'theforeman/journald-native',
+  #'theforeman/kafo',
+  #'theforeman/kafo_parsers',
+  #'theforeman/kafo_wizards',
+  #'theforeman/katello-pull-transport-migrate',
+  #'theforeman/katello-selinux',
+  #'theforeman/ldap_fluff',
+  #'theforeman/obsah',
+  #'theforeman/puppet-foreman_scap_client',
+  #'theforeman/puppet-iop',
+  #'theforeman/puppet-iop_advisor_engine',
+  #'theforeman/safemode',
+  #'theforeman/smart-proxy',
+  #'theforeman/smart_proxy_discovery_image',
+  #'theforeman/smart_proxy_vault',
+  'theforeman/.github',
+  'theforeman/actions',
+  'theforeman/apidocs',
+  'theforeman/candlepin-oci-images',
+  'theforeman/candlepin-packaging',
+  'theforeman/foreman',
+  'theforeman/foreman-graphics',
+  'theforeman/foreman-infra',
+  'theforeman/foreman-installer-modulesync',
+  'theforeman/foreman-js',
+  'theforeman/foreman-oci-images',
+  'theforeman/foreman-packaging',
+  'theforeman/foreman-plugin-overview',
+  'theforeman/foreman_transfer_repo',
+  'theforeman/gha-matrix-builder',
+  'theforeman/gha-matrix-ruby-verifier',
+  'theforeman/jenkins-jobs',
+  'theforeman/kafo_module_lint',
+  'theforeman/nboci-files',
+  'theforeman/npm2rpm',
+  'theforeman/obal',
+  'theforeman/prprocessor',
+  'theforeman/pulp-oci-images',
+  'theforeman/pulpcore-packaging',
+  'theforeman/puppet-foreman_simple_user',
+  'theforeman/puppet-katello_devel',
+  'theforeman/puppet-motd',
+  'theforeman/redmine_omniauth_github',
+  'theforeman/redmine_release_fields',
+  'theforeman/redmine_ruby_code',
+  'theforeman/smart_proxy_dns_plugin_template',
+  'theforeman/smart_proxy_example',
+  'theforeman/smart_proxy_plugin_template',
+  'theforeman/smoker',
+  'theforeman/theforeman-rel-eng',
+  'theforeman/tool_belt',
+]
+
+all_repos = set()
+
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--filename', '-f', default='config.yaml', type=argparse.FileType())
+
+    args = parser.parse_args()
+    data = load_config(args.filename)
+
+    known_repos = set()
+    for entry in chain(data['cli']['plugins'], data['foreman']['plugins'], data['smart_proxy']['modules'], data['smart_proxy']['providers'], data['installer']['modules'], data['client'], data['libraries'], data['auxiliary']):
+      known_repos.add(entry.url.replace('https://github.com/', ''))
+
+
+    for org in ORGS:
+      u = REPOS_URL % {'owner': org}
+      while (u):
+        r = requests.get(u)
+        if (r.ok):
+            repos = r.json()
+            for repo in repos:
+                full_name = f'{org}/{repo['name']}'
+                if repo['archived'] or repo['fork'] or full_name in EXCLUDED_REPOS:
+                  continue
+                all_repos.add(full_name)
+            if 'next' in r.links:
+                u = r.links['next']['url']
+            else:
+                u = None
+    print(all_repos-known_repos)
+
+if __name__ == '__main__':
+    main()
