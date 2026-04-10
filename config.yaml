@@ -720,7 +720,13 @@ libraries:
     deb: true
     rpm: true
   ldap_fluff:
+    github_org: 'theforeman'
+    github_team: 'theforeman/ldap-fluff'
     rpm: true
+    satellite: true
+    tests:
+      github:
+        Ruby: ci.yml
   obsah:
     rpm: python-obsah
   safemode:
