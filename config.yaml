@@ -358,6 +358,7 @@ foreman:
       rpm: true
       rpm_directory: 'satellite'
       translations: true
+      github_team: 'RedHatSatellite/foreman_theme_satellite'
       satellite: true
       tests:
         github:
