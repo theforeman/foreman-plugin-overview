@@ -733,6 +733,9 @@ libraries:
     github_org: Apipie
     deb: true
     rpm: true
+  apypie:
+    github_org: Apipie
+    github_team: 'Apipie/apypie'
     satellite: true
   dynflow:
     github_org: Dynflow
