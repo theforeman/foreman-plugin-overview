@@ -4,7 +4,8 @@ import yaml
 
 # OS-specific packages use this path
 DEBIAN_RELEASE = 'bookworm'
-PACKAGING_URL = 'https://github.com/theforeman/foreman-packaging'
+FOREMAN_PACKAGING_URL = 'https://github.com/theforeman/foreman-packaging'
+PULPCORE_PACKAGING_URL = 'https://github.com/theforeman/pulpcore-packaging'
 
 
 @dataclass
@@ -75,13 +76,13 @@ class PackagedEntry(Entry):
     def rpm_url(self):
         if not self.rpm:
             return None
-        return f'{PACKAGING_URL}/tree/rpm/develop/packages/{self.rpm_directory}/{self.rpm}'
+        return f'{FOREMAN_PACKAGING_URL}/tree/rpm/develop/packages/{self.rpm_directory}/{self.rpm}'
 
     @property
     def deb_url(self):
         if not self.deb:
             return None
-        return f'{PACKAGING_URL}/tree/deb/develop/{self.deb_directory}/{self.deb}'
+        return f'{FOREMAN_PACKAGING_URL}/tree/deb/develop/{self.deb_directory}/{self.deb}'
 
     @property
     def puppet_module(self):
@@ -136,6 +137,31 @@ class SmartProxyPlugin(PackagedEntry): # pylint: disable=too-few-public-methods
     @property
     def puppet_module(self):
         return 'puppet-foreman_proxy'
+
+@dataclass
+class PulpPlugin(PackagedEntry):
+    installer: bool = False
+
+    def __post_init__(self):
+        # Pulp plugins follow naming: pulp_{short_name} (like pulp_smart_proxy)
+        if not self.name:
+            self.name = f'pulp_{self.short_name}'
+        if self.rpm is True:
+            self.rpm = f'python-{self.name.replace("_", "-")}'
+        if not self.tests:
+            self.tests = {'github': {'Python': 'ci.yml'}}
+        super().__post_init__()
+
+    @property
+    def rpm_url(self):
+        if not self.rpm:
+            return None
+        return f'{PULPCORE_PACKAGING_URL}/tree/rpm/develop/packages/{self.rpm}'
+
+    @property
+    def deb_url(self):
+        # Pulp plugins don't have deb packages
+        return None
 
 @dataclass
 class HammerPlugin(PackagedEntry):
@@ -211,6 +237,9 @@ def load_config(config):
 
     data['libraries'] = [Library(short_name=repository_id, **(repository or {}))
       for repository_id, repository in data['libraries'].items()]
+
+    data['pulp_plugins'] = [PulpPlugin(short_name=plugin_id, **(plugin or {}))
+      for plugin_id, plugin in data.get('pulp_plugins', {}).items()]
 
     data['auxiliary'] = [Entry(short_name=repository_id, **(repository or {}))
       for repository_id, repository in data['auxiliary'].items()]

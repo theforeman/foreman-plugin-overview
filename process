@@ -73,6 +73,9 @@ def render_markdown(data):
     print('# Libraries')
     print_markdown_table(data['libraries'], i18n=False)
 
+    print('# Pulp Plugins')
+    print_markdown_table(data['pulp_plugins'], i18n=False)
+
     print('# Client')
     print_markdown_table(data['client'], i18n=False)
 

@@ -666,6 +666,14 @@ libraries:
   safemode:
     rpm: true
 
+pulp_plugins:
+  # Pulp plugins that integrate with Foreman ecosystem
+  # Packaged in pulpcore-packaging, not foreman-packaging
+  smart_proxy:
+    rpm: true
+    github_team: 'theforeman/pulp'
+    satellite: true
+
 auxiliary:
   foreman-documentation:
     description: "Official Katello documentation"
