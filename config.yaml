@@ -115,7 +115,6 @@ foreman:
       deb: true
       rpm: true
       github_team: 'theforeman/foreman-hooks'
-      satellite: true
       tests:
         github:
           Ruby: ruby_ci.yml
@@ -130,6 +129,7 @@ foreman:
       rpm: true
       translations: true
       github_org: 'Katello'
+      github_team: 'Katello/katello'
       rpm_directory: 'katello'
       redmine: true
       satellite: true
@@ -358,6 +358,7 @@ foreman:
       rpm: true
       rpm_directory: 'satellite'
       translations: true
+      github_team: 'RedHatSatellite/foreman_theme_satellite'
       satellite: true
       tests:
         github:
@@ -404,12 +405,14 @@ smart_proxy:
   # grep -R 'foreman_proxy::plugin::provider ' puppet-foreman_proxy/manifests/plugin | cut -d\' -f2
   providers:
     dhcp_bluecat:
+      github_team: 'theforeman/bluecat'
       installer: false
       rpm: true
     dhcp_device42:
       installer: false
       rpm: true
     dhcp_dnsmasq:
+      github_team: 'theforeman/proxy-dnsmasq'
       installer: false
       deb: true
       rpm: true
@@ -417,10 +420,13 @@ smart_proxy:
       deb: true
       rpm: true
       github_team: theforeman/proxy-infoblox
+      satellite: true
     dhcp_remote_isc:
       deb: true
       rpm: true
+      satellite: true
     dns_dnsmasq:
+      github_team: 'theforeman/proxy-dnsmasq'
       installer: false
       deb: true
       rpm: true
@@ -428,15 +434,19 @@ smart_proxy:
       deb: true
       rpm: true
       github_team: theforeman/proxy-infoblox
+      satellite: true
     dns_powerdns:
+      github_team: 'theforeman/proxy-dns-plugins'
       deb: true
       rpm: true
     dns_route53:
       installer: false
       deb: true
       rpm: true
+      github_team: theforeman/proxy-dns-plugins
     realm_ad:
       name: smart_proxy_realm_ad_plugin
+      github_team: theforeman/proxy-ad-realm
       installer: false
       rpm: true
     request_forwarder:
@@ -451,20 +461,25 @@ smart_proxy:
       rpm: true
       puppet_acceptance_tests: true
       github_team: 'theforeman/ansible'
+      satellite: true
     container_gateway:
       # Note: not exposed directly in the installer
       github_org: 'Katello'
+      github_team: 'Katello/katello-core'
       rpm: true
+      satellite: true
     discovery:
       deb: true
       rpm: true
       puppet_acceptance_tests: true
       github_team: 'theforeman/discovery'
+      satellite: true
     dynflow:
       deb: true
       rpm: true
       puppet_acceptance_tests: true
       github_team: 'theforeman/remote-execution'
+      satellite: true
     hdm:
       deb: true
       rpm: true
@@ -488,16 +503,19 @@ smart_proxy:
       rpm: true
       puppet_acceptance_tests: true
       github_team: 'theforeman/openscap'
+      satellite: true
     pulp:
       # Note: not exposed directly in the installer
       rpm: true
       github_team: 'theforeman/pulp'
+      satellite: true
     remote_execution_ssh:
       deb: true
       rpm: true
       # TODO: also remote_execution_script_pull_mqtt
       puppet_acceptance_tests: 'remote_execution_script'
       github_team: 'theforeman/remote-execution'
+      satellite: true
     salt:
       deb: true
       rpm: true
@@ -506,6 +524,7 @@ smart_proxy:
       deb: true
       rpm: true
       github_team: 'theforeman/webhooks'
+      satellite: true
 
 cli:
   # grep '  foreman::cli::plugin' puppet-foreman/manifests/cli/*.pp | cut -d\' -f2
@@ -617,6 +636,7 @@ cli:
       deb: true
       rpm: true
       # No translations
+      github_team: theforeman/cli
     foreman_tasks:
       deb: true
       rpm: true
@@ -646,6 +666,7 @@ cli:
       rpm: true
       rpm_directory: 'katello'
       github_org: 'Katello'
+      github_team: 'Katello/cli'
       translations: true
       satellite: true
 
@@ -667,63 +688,99 @@ installer:
 
 client:
   ansible-foreman_scap_client:
+    github_team: 'theforeman/openscap'
     installer: true
-    rpm: true
+    rpm: ansiblerole-foreman_scap_client
     rpm_directory: plugins
+    satellite: true
   foreman_scap_client:
+    github_team: 'theforeman/openscap'
     rpm: true
+    satellite: true
   foreman_scap_client_bash:
+    github_team: 'theforeman/openscap'
     rpm: true
   foreman_ygg_worker:
+    github_team: 'theforeman/remote-execution'
     rpm: true
+    satellite: true
   katello-pull-transport-migrate:
     rpm: true
+    satellite: true
   katello-host-tools:
     rpm: true
     github_org: 'Katello'
+    github_team: 'Katello/katello'
   puppet-foreman_scap_client:
+    github_team: 'theforeman/openscap'
     installer: true
     rpm: true
     rpm_directory: plugins
+    satellite: true
 
 libraries:
   apipie-bindings:
     github_org: Apipie
     deb: true
     rpm: true
+    satellite: true
   apipie-dsl:
     github_org: Apipie
     deb: true
     rpm: true
+    satellite: true
   apipie-rails:
     github_org: Apipie
     deb: true
     rpm: true
+    satellite: true
   dynflow:
     github_org: Dynflow
     deb: true
     rpm: true
+    satellite: true
+  foremanctl:
+    github_team: 'theforeman/foremanctl'
+    rpm: foremanctl
+    satellite: true
   journald-logger:
     deb: true
     rpm: true
+    satellite: true
   journald-native:
     deb: true
     rpm: true
+    satellite: true
   kafo:
+    github_team: 'theforeman/installer'
     deb: true
     rpm: true
+    satellite: true
   kafo_parsers:
+    github_team: 'theforeman/installer'
     deb: true
     rpm: true
+    satellite: true
   kafo_wizards:
+    github_team: 'theforeman/installer'
     deb: true
     rpm: true
+    satellite: true
   ldap_fluff:
+    github_team: 'theforeman/ldap-fluff'
     rpm: true
+    satellite: true
+    tests:
+      github:
+        Ruby: ci.yml
   obsah:
+    github_team: 'theforeman/foremanctl'
     rpm: python-obsah
+    satellite: true
   safemode:
+    github_team: 'theforeman/safemode'
     rpm: true
+    satellite: true
 
 auxiliary:
   foreman-documentation:
