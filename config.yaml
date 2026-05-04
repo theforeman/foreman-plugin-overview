@@ -666,7 +666,7 @@ cli:
       rpm: true
       rpm_directory: 'katello'
       github_org: 'Katello'
-      github_team: 'Katello/katello'
+      github_team: 'Katello/cli'
       translations: true
       satellite: true
 
