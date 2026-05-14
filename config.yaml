@@ -129,7 +129,7 @@ foreman:
       rpm: true
       translations: true
       github_org: 'Katello'
-      github_team: 'Katello/katello'
+      github_team: 'Katello/katello-core'
       rpm_directory: 'katello'
       redmine: true
       satellite: true
@@ -478,7 +478,7 @@ smart_proxy:
       deb: true
       rpm: true
       puppet_acceptance_tests: true
-      github_team: 'theforeman/remote-execution'
+      github_team: 'theforeman/foreman-tasks'
       satellite: true
     hdm:
       deb: true
@@ -710,7 +710,7 @@ client:
   katello-host-tools:
     rpm: true
     github_org: 'Katello'
-    github_team: 'Katello/katello'
+    github_team: 'Katello/katello-core'
   puppet-foreman_scap_client:
     github_team: 'theforeman/openscap'
     installer: true
@@ -736,6 +736,7 @@ libraries:
     satellite: true
   dynflow:
     github_org: Dynflow
+    github_team: 'theforeman/foreman-tasks'
     deb: true
     rpm: true
     satellite: true
