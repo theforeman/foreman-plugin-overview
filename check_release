@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+
+import argparse
+
+import requests
+
+from itertools import chain
+from fpo import load_config, Entry
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--filename', '-f', default='config.yaml', type=argparse.FileType())
+
+    args = parser.parse_args()
+    data = load_config(args.filename)
+
+    needs_action = []
+    needs_update = []
+
+    for entry in chain(data['cli']['plugins'], data['foreman']['plugins'], data['smart_proxy']['modules'], data['smart_proxy']['providers'], data['installer']['modules']):
+        release_url = f'{entry.url}/raw/HEAD/.github/workflows/release.yml'
+        release_file = requests.get(release_url)
+        if release_file.ok:
+          if entry.release_action is not None and entry.release_action not in release_file.text:
+            needs_update.append(f'* `{entry.name}` needs to use `{entry.release_action}` in {release_url}')
+        else:
+          needs_action.append(f'* `{entry.name}` needs a release action at {release_url}')
+    if needs_action:
+        print("# NEEDS ACTION")
+        print('\n'.join(sorted(needs_action)))
+    if needs_update:
+        print("# NEEDS UPDATE")
+        print('\n'.join(sorted(needs_update)))
+
+if __name__ == '__main__':
+    main()
