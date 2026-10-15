@@ -785,6 +785,11 @@ libraries:
     github_team: 'theforeman/safemode'
     rpm: true
     satellite: true
+  yggdrasil-worker-forwarder:
+    # Go service, runs on the server rather than on managed hosts
+    rpm: yggdrasil-worker-forwarder
+    rpm_directory: plugins
+    satellite: true
 
 pulp_plugins:
   # Pulp plugins that integrate with Foreman ecosystem
